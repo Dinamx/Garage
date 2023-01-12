@@ -27,6 +27,8 @@ public class Main {
         emp.setIdGenre(2);
         emp.setIdNiveauEtude(3);
 
+        System.out.println("hello there it's prisca XD ");
+
 
         emp.insert(new Connexion().getConnexion());
 
