@@ -14,6 +14,9 @@ public class Genre extends ObjetBDD {
     }
 
     public Genre(String descriptions) {
-        this.descriptions = descriptions;
+        setDescriptions(descriptions);
+    }
+
+    public Genre() {
     }
 }

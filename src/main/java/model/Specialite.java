@@ -12,7 +12,7 @@ public class Specialite {
     }
 
     public Specialite(String description) {
-        this.description = description;
+        setDescription(description);
     }
 
     public Specialite() {

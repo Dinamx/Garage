@@ -2,11 +2,13 @@ package model;
 
 import exeptions.AgeExceptions;
 
+import exeptions.EmptyFieldException;
 import tools.Tools;
 
 import manipDb.ObjetBDD;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class Employe extends ObjetBDD {
     String nom;
@@ -28,7 +30,8 @@ public class Employe extends ObjetBDD {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+
+        this.nom = nom.trim();
     }
 
     public String getPrenom() {
@@ -36,7 +39,7 @@ public class Employe extends ObjetBDD {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        this.prenom = prenom.trim();
     }
 
     public Date getDateNaissance() {
@@ -71,14 +74,20 @@ public class Employe extends ObjetBDD {
 
     }
 
-    public Employe(String nom, String prenom, Date dateNaissance, int idGenre, int idNiveauEtude) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-        this.idGenre = idGenre;
-        this.idNiveauEtude = idNiveauEtude;
+    public Employe(String nom, String prenom, Date dateNaissance, int idGenre, int idNiveauEtude) throws AgeExceptions {
+        setNom(nom);
+        setPrenom(prenom);
+        setDateNaissance(dateNaissance);
+        setIdGenre(idGenre);
+        setIdNiveauEtude(idNiveauEtude);
     }
 /** METHODS*/
-
+    public boolean valueControl () throws EmptyFieldException {
+        if(getDateNaissance()==null || getNom().equals("") || getPrenom().equals(""))
+        {
+            throw new EmptyFieldException();
+        }
+        return true;
+    }
 
 }

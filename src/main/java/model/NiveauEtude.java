@@ -12,6 +12,9 @@ public class NiveauEtude {
     }
 
     public NiveauEtude(String description) {
-        this.description = description;
+        setDescription(description);
+    }
+
+    public NiveauEtude() {
     }
 }

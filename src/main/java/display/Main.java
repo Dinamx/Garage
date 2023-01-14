@@ -6,13 +6,14 @@ import database.core.Config;
 import database.core.DBConnection;
 import database.core.Database;
 
+import java.lang.reflect.Field;
+import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Database database= Config.getPgDb();
-        DBConnection dbConnection=database.createConnection();
+        Connection dbConnection=new Connexion().getConnexion();
 
         /** do tests right bellow this text   */
 
@@ -21,11 +22,12 @@ public class Main {
         Date test=Date.valueOf("2000-01-11");
         Employe emp=new Employe();
 //        emp.createTable(dbConnection);
-        emp.setNom("Prisca");
-        emp.setPrenom("Fehiarisoa");
+       /* emp.setNom("Prisca");
+        emp.setPrenom("Fehiarisoa");*/
         emp.setDateNaissance(test);
         emp.setIdGenre(2);
         emp.setIdNiveauEtude(3);
+        emp.valueControl();
 
         System.out.println("hello there it's prisca XD ");
 
@@ -37,7 +39,7 @@ public class Main {
 
 
         /** --------------------*/
-        dbConnection.commit();
+//        dbConnection.commit();
         dbConnection.close();
     }
 }
