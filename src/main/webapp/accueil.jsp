@@ -13,8 +13,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Icons font CSS-->
-    <link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
@@ -45,12 +45,12 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#">Accueil</a></li>
-          <li><a class="nav-link scrollto" href="#">Employes</a></li>
-          <li><a class="nav-link scrollto" href="#">Services</a></li>
-          <li><a class="nav-link scrollto " href="#">Benefice</a></li>
-          <li><a class="nav-link scrollto" href="#">Depense</a></li>
-          <li><a class="nav-link scrollto" href="#">Log out</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto" href="#about">Employes</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Benefice</a></li>
+          <li><a class="nav-link scrollto" href="#testimonials">Depense</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Log out</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -59,94 +59,28 @@
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
 
     </div>
   </header><!-- End Header -->
-    <!-- table liste -->
-    <div class="tab">
-        <h2 class="text">Listes Employes</h2>
-        <div class="table-responsive">
-            <table class="table">
-                <tr class="tete">
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Numero de telephone</th>
-                    <th>Date de naissance</th>
-                    <th>Genre</th>
-                    <th>Niveau d'etude</th>
-                    <th>Listes specialites</th>
-                    <th>Salaire mensuel</th>
-                    <th>Salaire horaire</th>
-                </tr>
-                <tr class="anatiny">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <!-- end table liste -->
 
-    <!-- Formulaire insertion -->
+  <!-- Formulaire insertion -->
   <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Insertion Employe</h2>
+                    <h2 class="title">Achat de piece</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST">
-                        <div class="form-row m-b-55">
-                            <div class="name">Nom</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="Prenom">
-                                            <label class="label--desc">Prenom</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="nom">
-                                            <label class="label--desc">Nom</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-row">
-                            <div class="name">Numero de telephone</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="number" name="numero">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Date de naissance</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="date" name="dateNaissance">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Genre</div>
+                            <div class="name">Piece</div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="idgenre">
-                                            <option disabled="disabled" selected="selected">Choose option</option>
+                                        <select name="">
+                                            <option disabled="disabled" selected="selected">Selelctionner</option>
                                             <option>Subject 1</option>
                                             <option>Subject 2</option>
                                             <option>Subject 3</option>
@@ -157,12 +91,12 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Niveau d'etudes</div>
+                            <div class="name">Modele vehicule</div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="idNiveauEtude">
-                                            <option disabled="disabled" selected="selected">Text goes here</option>
+                                        <select name="">
+                                            <option disabled="disabled" selected="selected">select</option>
                                             <option>Subject 1</option>
                                             <option>Subject 2</option>
                                             <option>Subject 3</option>
@@ -173,18 +107,18 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Specialite</div>
+                            <div class="name">Quantite</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="specialite">
-                                            <option disabled="disabled" selected="selected">Text goes here</option>
-                                            <option>Subject 1</option>
-                                            <option>Subject 2</option>
-                                            <option>Subject 3</option>
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
+                                    <input class="input--style-5" type="text" name="descriptionPiece">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Prix Total</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="number" name="prixAchat">
                                 </div>
                             </div>
                         </div>
@@ -197,6 +131,27 @@
         </div>
     </div>
     <!-- end formulaire insertion -->
+
+    <!-- table liste -->
+  <div class="table-responsive">
+    <table class="table">
+      <tr class="tete"> 
+        <th>Description Piece</th>
+        <th>Quantite Disponible</th>
+        <th>Modele</th>
+        <th>Prix</th>
+      </tr>
+      <tr class="anatiny">
+        <td>AAAAAAAAAAAAAA</td>
+        <td>2222222222</td>
+        <td>AAAAAAAAAA</td>
+        <td>2222222222</td>
+      </tr>
+    </table>
+  </div>
+  <!-- end table liste -->
+
+  
     <!-- Jquery JS-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
