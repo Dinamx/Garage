@@ -1,6 +1,8 @@
 package model;
 
-public class NiveauEtude {
+import manipDb.ObjetBDD;
+
+public class NiveauEtude extends ObjetBDD {
     String description;
 
     public String getDescription() {

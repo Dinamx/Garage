@@ -2,6 +2,7 @@
   <library name="Maven: javax.servlet:javax.servlet-api:4.0.1">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/me/documents/all-jars/postgresql-42.5.0.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-javadoc.jar!/" />

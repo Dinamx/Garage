@@ -10,7 +10,7 @@
 	<title>Login Administrateur</title>
 </head>
 <body>
-
+<%--
 <section>
     <h1></h1>
     <h1></h1>
@@ -68,6 +68,8 @@
         </div>
     </section>
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>--%>
+
+<a href="${pageContext.request.contextPath}/PrepaInsertEmp">insert emp</a>
 </body>
 </html>

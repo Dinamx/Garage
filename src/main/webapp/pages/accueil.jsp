@@ -13,23 +13,23 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Icons font CSS-->
-    <link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="../assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/insertCss.css" rel="stylesheet" media="all">
+    <link href="../assets/css/insertCss.css" rel="stylesheet" media="all">
     <title>Insertion</title>
 </head>
 <body>
@@ -70,12 +70,44 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Insertion Produit</h2>
+                    <h2 class="title">Achat de piece</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST">
                         <div class="form-row">
-                            <div class="name">Description Piece</div>
+                            <div class="name">Piece</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="">
+                                            <option disabled="disabled" selected="selected">Selelctionner</option>
+                                            <option>Subject 1</option>
+                                            <option>Subject 2</option>
+                                            <option>Subject 3</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Modele vehicule</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="">
+                                            <option disabled="disabled" selected="selected">select</option>
+                                            <option>Subject 1</option>
+                                            <option>Subject 2</option>
+                                            <option>Subject 3</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Quantite</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="descriptionPiece">
@@ -83,7 +115,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Prix d'achat</div>
+                            <div class="name">Prix Total</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="number" name="prixAchat">
@@ -101,18 +133,19 @@
     <!-- end formulaire insertion -->
 
     <!-- table liste -->
-  <h2 class="text">Listes des produits en stock</h2>
   <div class="table-responsive">
     <table class="table">
       <tr class="tete"> 
-        <th>Piece</th>
+        <th>Description Piece</th>
+        <th>Quantite Disponible</th>
+        <th>Modele</th>
         <th>Prix</th>
-        <th>Quantite</th>
       </tr>
       <tr class="anatiny">
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>AAAAAAAAAAAAAA</td>
+        <td>2222222222</td>
+        <td>AAAAAAAAAA</td>
+        <td>2222222222</td>
       </tr>
     </table>
   </div>
@@ -120,13 +153,13 @@
 
   
     <!-- Jquery JS-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
-    <script src="assets/vendor/select2/select2.min.js"></script>
-    <script src="assets/vendor/datepicker/moment.min.js"></script>
-    <script src="assets/vendor/datepicker/daterangepicker.js"></script>
+    <script src="../assets/vendor/select2/select2.min.js"></script>
+    <script src="../assets/vendor/datepicker/moment.min.js"></script>
+    <script src="../assets/vendor/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
-    <script src="assets/js/global.js"></script>
+    <script src="../assets/js/global.js"></script>
 </body>
 </html>

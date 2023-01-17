@@ -1,6 +1,8 @@
 package model;
 
-public class Specialite {
+import manipDb.ObjetBDD;
+
+public class Specialite extends ObjetBDD {
     String description ;
 
     public String getDescription() {

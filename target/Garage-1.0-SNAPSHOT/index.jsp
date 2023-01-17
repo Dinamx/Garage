@@ -7,13 +7,19 @@
 	<link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link href="assets/fonts/fontawesome-5/css/all.css" rel="stylesheet">
-	<title>Inscription</title>
+	<title>Login Administrateur</title>
 </head>
 <body>
+<%--
+<section>
+    <h1></h1>
+    <h1></h1>
+</section>
+
     <section>
         <div class="contentBx coucou"> 
             <div class="formBx">
-                <h2>INSERTION EMPLOYEE</h2>
+                <h2>Login Administrateur</h2>
                 <form action="" method="post">
                     <div class="inputBx">
                         <input type="text" name="" required>
@@ -62,6 +68,8 @@
         </div>
     </section>
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>--%>
+
+<a href="${pageContext.request.contextPath}/PrepaInsertEmp">insert emp</a>
 </body>
 </html>
