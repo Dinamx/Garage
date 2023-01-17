@@ -115,11 +115,24 @@ create table vehicule(
 );
 
 
+drop table typeservice cascade ;
 create table typeservice(
     id serial primary key,
     service varchar(50),
-    prix double precision check (prix>0)
+    prix double precision check (prix>0),
+    duree_supposee int
 );
+
+select * from typeservice;
+
+
+
+create table specialiteEmploye_typeService(
+    idSpecialiteEmploye integer references specialite(id),
+    idTypeService integer references typeservice(id)
+);
+
+
 
 
 
@@ -171,7 +184,8 @@ create table ventepiece(
     idpiece integer references piece(id),
     montant double precision check (montant>0),
     quantite double precision check (quantite>0),
-    date_vente date
+    date_vente date,
+    id_reparation integer references serviceeffectue(id)
 );
 create table demandeDevis(
     id serial primary key,
