@@ -219,6 +219,8 @@ create table Salaire(
     date_payement date
 );
 
+
+
 -- But ; benefice = vente - depense
 
 -- vues
