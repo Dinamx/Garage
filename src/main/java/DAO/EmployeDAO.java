@@ -1,5 +1,6 @@
 package DAO;
 
+import manipDb.Connexion;
 import model.Genre;
 import model.NiveauEtude;
 import model.Specialite;
@@ -36,6 +37,7 @@ public class EmployeDAO {
         for (int i = 0; i < spec.length; i++) {
             gen.add((Specialite) spec[i]);
         }
+        System.out.println(spec.length);
         return gen;
     }
 
@@ -61,6 +63,40 @@ public class EmployeDAO {
             id.add(res.getInt(res.findColumn("id")));
         }
         return id;
+    }
+
+    public static int getNiveauEtudeID(String niveauEtude,Connection connection) throws Exception {
+        Vector<NiveauEtude> niv=listeNiveauEtude(connection,"");
+        Vector<Integer> id=listeIdNiveauEtude(connection);
+        int index=-1;
+        for (int i = 0; i < niv.size(); i++) {
+            if(niv.get(i).getDescription().equals(niveauEtude))
+            {
+                index=i;
+            }
+        }
+        return id.get(index);
+    }
+
+    public static int getSpecialiteId(Connection connection,String specialites) throws Exception {
+        Vector<Specialite> spec=listeSpecialites(connection,"");
+        Vector<Integer> id=listeIdSpecialites(connection);
+        int index=-1;
+        for (int i = 0; i < spec.size(); i++) {
+            if(spec.get(i).getSpecialite().equals(specialites))
+            {
+                index=i;
+            }
+        }
+        return id.get(index);
+    }
+
+    public static void main(String[] args) throws Exception {
+        Connection connection=new Connexion().getConnexion();
+
+        System.out.println(getNiveauEtudeID("Bac +5 ",connection));
+
+        connection.close();
     }
 
 }

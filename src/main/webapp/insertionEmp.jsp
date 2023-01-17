@@ -18,23 +18,23 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Icons font CSS-->
-    <link href="../assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="../assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="../assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="../assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
 
     <!-- Template Main CSS File -->
-    <link href="../assets/css/insertCss.css" rel="stylesheet" media="all">
+    <link href="assets/css/insertCss.css" rel="stylesheet" media="all">
     <title>Insertion</title>
 </head>
 <body>
@@ -104,8 +104,7 @@
     <%
         Vector <NiveauEtude> niveauEtudes=(Vector<NiveauEtude>)request.getAttribute("niveauEtude");
         Vector <Specialite> specialites=(Vector<Specialite>)request.getAttribute("specialites");
-        Vector<Integer> idNiveauEtude=  (Vector<Integer>)request.getAttribute("idspecialites");
-        Vector<Integer> idSpecialites=(Vector<Integer>)request.getAttribute("idNiveauEtude");
+
     %>
 
 
@@ -122,14 +121,15 @@
                     <h2 class="title">Insertion Employe</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+<%--        FORM            --%>
+                    <form method="POST" action="${pageContext.request.contextPath}/insertionEmp">
                         <div class="form-row m-b-55">
                             <div class="name">Nom</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="Prenom">
+                                            <input class="input--style-5" type="text" name="prenom">
                                             <label class="label--desc">Prenom</label>
                                         </div>
                                     </div>
@@ -142,14 +142,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Numero de telephone</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="number" name="numero">
-                                </div>
-                            </div>
-                        </div>
+
+
                         <div class="form-row">
                             <div class="name">Date de naissance</div>
                             <div class="value">
@@ -164,8 +158,8 @@
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="idgenre">
-                                            <option value="1">homme</option>
-                                            <option value="2">femme</option>
+                                            <option value="homme">homme</option>
+                                            <option value="femme">femme</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -182,7 +176,7 @@
                                                 for (int i = 0; i < niveauEtudes.size(); i++) {
 
                                                 %>
-                                            <option value="<%=idNiveauEtude.get(i)%>"><%=niveauEtudes.get(i).getDescription()%></option>
+                                            <option value="<%=niveauEtudes.get(i).getDescription()%>"><%=niveauEtudes.get(i).getDescription()%></option>
                                             <%}%>
                                         </select>
                                         <div class="select-dropdown"></div>
@@ -195,36 +189,46 @@
                         <div class="form-row">
                             <div class="name">Specialite</div>
                             <div class="value">
-                                <div class="input-group">
 
-                                        <% for (int i = 0; i < specialites.size(); i++) {
+                                        <%
+                                            for (int i = 0; i < specialites.size(); i++) {
                                         %>
-                                    <div class="input-group">
-                                        <label for="<%=specialites.get(i).getDescription()%>"><%=specialites.get(i).getDescription()%></label>
-                                        <input type="radio" class="bx-radio" name="<%=specialites.get(i).getDescription()%>" id="<%=specialites.get(i).getDescription()%>">
-                                    </div>
-                                        <%}%>
 
+                                <div class="form-check">
+                                    <input class="form-check-input" name="<%=specialites.get(i).getSpecialite()%>" type="checkbox" value="" id="flexCheckDefault<%=i%>">
+                                    <label class="form-check-label" for="flexCheckDefault<%=i%>">
+                                        <%=specialites.get(i).getSpecialite()%>
+                                    </label>
                                 </div>
+
+                                        <%}%>
                             </div>
                         </div>
                         <div>
+
+
+
                             <button class="btn btn--radius-2 btn--blue" type="submit">Valider</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+      
+
+
     </div>
+    
+    
     <!-- end formulaire insertion -->
     <!-- Jquery JS-->
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
-    <script src="../assets/vendor/select2/select2.min.js"></script>
-    <script src="../assets/vendor/datepicker/moment.min.js"></script>
-    <script src="../assets/vendor/datepicker/daterangepicker.js"></script>
+    <script src="assets/vendor/select2/select2.min.js"></script>
+    <script src="assets/vendor/datepicker/moment.min.js"></script>
+    <script src="assets/vendor/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
-    <script src="../assets/js/global.js"></script>
+    <script src="assets/js/global.js"></script>
 </body>
 </html>

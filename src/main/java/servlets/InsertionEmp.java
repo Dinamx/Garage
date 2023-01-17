@@ -1,22 +1,33 @@
 package servlets;
 
+import DAO.EmployeDAO;
 import exeptions.AgeExceptions;
 import exeptions.EmptyFieldException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import model.Employe;
 import database.core.Config;
 import database.core.DBConnection;
 import database.core.Database;
 import manipDb.Connexion;
+import model.Specialite;
+import model.SpecialiteEmploye;
 
-import javax.servlet.ServletException;
+/*import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;*/
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Objects;
+import java.util.Vector;
 
 @WebServlet(name = "insertion", value = "/insertionEmp")
 public class InsertionEmp extends HttpServlet {
@@ -26,40 +37,67 @@ public class InsertionEmp extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServletException {
 /** connexion base */
         Connection connection=new Connexion().getConnexion();
+        PrintWriter out = response.getWriter();
 
         /**----*/
 
-        String nom=request.getParameter("Nom");
+/** GET DATAS FROM FORM*/
+        String nom=request.getParameter("nom");
         String prenom=request.getParameter("prenom");
         String dateNaissance=request.getParameter("dateNaissance");
-        int id_genre=Integer.parseInt(request.getParameter("genre"));
-        int id_niveau=Integer.parseInt(request.getParameter("niveauEtude"));
-
+        String genres=request.getParameter("genre");
+        int id_genre= Objects.equals(genres, "homme") ? 1:2;
+        int id_niveau= 0;
+        try {
+            id_niveau = EmployeDAO.getNiveauEtudeID(request.getParameter("idNiveauEtude"),connection);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+/** CREATE AN EMPLOYE */
         Employe insertedEmp= null;
         try {
             insertedEmp = new Employe(nom,prenom, Date.valueOf(dateNaissance),id_niveau,id_genre);
+            out.println("done");
         } catch (AgeExceptions e) {
             throw new RuntimeException(e);
         }
+/** VERIFY IF THE FIELDS INSERTED ARE NOT NULL */
         try {
             insertedEmp.valueControl();
         } catch (EmptyFieldException e) { // todo : rediriger sur le formulaire pour etre rééditer
             request.setAttribute("toBeEditedEmploye", insertedEmp);
             request.getRequestDispatcher("").forward(request,response);
         }
-
+/** INSERT EMP TO DBA */
+        int id=-1;
         try {
-            insertedEmp.insert(new Connexion().getConnexion());
+            id=insertedEmp.insertReturning(new Connexion().getConnexion());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+/** INSERT DATA ABOUT SPECIALITIES */
+    // GET DATAS ABOUT SPECIALITIES
+        try {
+            Vector<Specialite> specialites = EmployeDAO.listeSpecialites(connection, "");
+            for (int i = 0; i < specialites.size(); i++) {
+                if(request.getParameter(specialites.get(i).getSpecialite())!=null)
+                {
+                    SpecialiteEmploye specialiteEmploye=new SpecialiteEmploye(EmployeDAO.getSpecialiteId(connection,specialites.get(i).getSpecialite()),id);
+                    specialiteEmploye.insert(connection);
+                }
+            }
+
+        }
+        catch (Exception e){
+            throw new RuntimeException();
+        }
+
 
         /** close connexion*/
         try {
-            connection.commit();
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);

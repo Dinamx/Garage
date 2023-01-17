@@ -3,18 +3,18 @@ package model;
 import manipDb.ObjetBDD;
 
 public class Specialite extends ObjetBDD {
-    String description ;
+    String specialite ;
 
-    public String getDescription() {
-        return description;
+    public String getSpecialite() {
+        return specialite;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSpecialite(String description) {
+        this.specialite = description;
     }
 
-    public Specialite(String description) {
-        setDescription(description);
+    public Specialite(String specialite) {
+        setSpecialite(specialite);
     }
 
     public Specialite() {
