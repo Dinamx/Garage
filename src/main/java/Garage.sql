@@ -140,10 +140,11 @@ create table serviceeffectue(
     id serial primary key,
     libelle varchar(100),
     idvehicule integer,
-    idservice integer references typeservice(id),
     date_service timestamp,
-    duree integer
+    duree integer,
+    iddemande_devis integer references demandeDevis(id)
 );
+
 
 
 
@@ -185,7 +186,7 @@ create table ventepiece(
     montant double precision check (montant>0),
     quantite double precision check (quantite>0),
     date_vente date,
-    id_reparation integer references serviceeffectue(id)
+    isservice integer references serviceeffectue(id)
 );
 create table demandeDevis(
     id serial primary key,
@@ -217,8 +218,6 @@ create table Salaire(
     montant double precision check (montant>0),
     date_payement date
 );
-
-
 
 -- But ; benefice = vente - depense
 
