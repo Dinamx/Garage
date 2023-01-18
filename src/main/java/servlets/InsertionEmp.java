@@ -91,11 +91,12 @@ public class InsertionEmp extends HttpServlet {
             }
 
         }
+
         catch (Exception e){
             throw new RuntimeException();
         }
 
-
+        response.sendRedirect("employe.jsp");
         /** close connexion*/
         try {
             connection.close();

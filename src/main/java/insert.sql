@@ -1,14 +1,5 @@
 -- specialites
-INSERT INTO specialite (specialite) VALUES ('Mécanique générale');
-INSERT INTO specialite (specialite) VALUES ('Réparation de moteurs');
-INSERT INTO specialite (specialite) VALUES ('Entretien de véhicules');
-INSERT INTO specialite (specialite) VALUES ('Pneumatiques');
-INSERT INTO specialite (specialite) VALUES ('Diagnostics électroniques');
-INSERT INTO specialite (specialite) VALUES ('Freins');
-INSERT INTO specialite (specialite) VALUES ('Climatisation');
-INSERT INTO specialite (specialite) VALUES ('Échappement');
-INSERT INTO specialite (specialite) VALUES ('Transmission');
-INSERT INTO specialite (specialite) VALUES ('Remplacement de pare-brise');
+
 
 -- services
 INSERT INTO typeservice (service, prix, duree_supposee)
@@ -48,6 +39,8 @@ INSERT INTO modele (marque, idmarque) VALUES ('Mustang', 5);
 INSERT INTO modele (marque, idmarque) VALUES ('Clio', 6);
 INSERT INTO modele (marque, idmarque) VALUES ('308', 7);
 INSERT INTO modele (marque, idmarque) VALUES ('C3', 8);
+
+-- unite
 
 -- piece
 INSERT INTO piece (piece, idunite, idmodele) VALUES ('Moteur', 1, 1);

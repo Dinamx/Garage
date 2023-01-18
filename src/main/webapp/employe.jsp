@@ -3,6 +3,14 @@
 <%@ page import="model.NiveauEtude" %>
 <%@ page import="model.Specialite" %>
 <%@ page import="DAO.EmployeDAO" %>
+<%@ page import="views.EmployeDetail" %>
+<%@ page import="model.SpecialiteEmploye" %>
+
+<%
+    Vector <NiveauEtude> niveauEtudes=(Vector<NiveauEtude>)request.getAttribute("niveauEtude");
+    Vector <Specialite> specialites=(Vector<Specialite>)request.getAttribute("specialites");
+    Vector<EmployeDetail> employeDetails=(Vector<EmployeDetail>) request.getAttribute("employedetail");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,6 +77,8 @@
 
     </div>
   </header><!-- End Header -->
+
+
     <!-- table liste -->
     <div class="tab">
         <h2 class="text">Listes Employes</h2>
@@ -85,27 +95,35 @@
                     <th>Salaire mensuel</th>
                     <th>Salaire horaire</th>
                 </tr>
+                <% for (int i = 0; i < employeDetails.size(); i++) {
+
+                %>
                 <tr class="anatiny">
+                    <td><%= employeDetails.get(i).getNom()%></td>
+                    <td><%= employeDetails.get(i).getPrenom()%></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%= employeDetails.get(i).getDateNaissance()%></td>
+                    <td><%= employeDetails.get(i).getGenre()%></td>
+                    <td><%= employeDetails.get(i).getNiveauEtude()%></td>
+                    <td>
+                 <%--       <%
+                            Vector<SpecialiteEmploye> specialiteEmployes=EmployeDAO.listSpecialiteEmp(employeDetails.get(i).getId_employe());
+                            for (int j = 0; j < specialiteEmployes.size(); j++) {
+                                out.println(specialiteEmployes.get(i).getIdSpecialite());
+                            }
+
+                        %>--%>
+                    </td>
+                    <td><%= employeDetails.get(i).getSalaireMontant()%></td>
+                    <td><%= employeDetails.get(i).getSalaireHoraire()%></td>
                 </tr>
+                <%}%>
             </table>
         </div>
     </div>
     <!-- end table liste -->
 
-    <%
-        Vector <NiveauEtude> niveauEtudes=(Vector<NiveauEtude>)request.getAttribute("niveauEtude");
-        Vector <Specialite> specialites=(Vector<Specialite>)request.getAttribute("specialites");
 
-    %>
 
 
 

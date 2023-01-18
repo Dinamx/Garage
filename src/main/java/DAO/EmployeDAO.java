@@ -4,6 +4,8 @@ import manipDb.Connexion;
 import model.Genre;
 import model.NiveauEtude;
 import model.Specialite;
+import model.SpecialiteEmploye;
+import views.EmployeDetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +25,7 @@ public class EmployeDAO {
         return gen;
     }*/
 
+    /** LISTES */
     public static Vector<NiveauEtude> listeNiveauEtude(Connection connection,String extracondition) throws Exception {
         Object [] nivEtude=new NiveauEtude().findAll(connection,extracondition);
         Vector<NiveauEtude> gen=new Vector<>();
@@ -40,6 +43,32 @@ public class EmployeDAO {
         System.out.println(spec.length);
         return gen;
     }
+
+    public static Vector<EmployeDetail> listeEmployeDetail(Connection connection, String extracondition) throws Exception {
+        Object [] list=new EmployeDetail().getFromView(connection,"employedetail",extracondition);
+        Vector<EmployeDetail> gen=new Vector<>();
+        for (int i = 0; i < list.length; i++) {
+            gen.add((EmployeDetail) list[i]);
+        }
+        return gen;
+    }
+    public static Vector<SpecialiteEmploye> listSpecialiteEmp(Connection connection,int id_emp) throws Exception {
+        Object [] spec=new SpecialiteEmploye().findAll(connection,"idemploye="+id_emp);
+        Vector<SpecialiteEmploye> gen=new Vector<>();
+        for (int i = 0; i < spec.length; i++) {
+            gen.add((SpecialiteEmploye) spec[i]);
+        }
+        System.out.println(spec.length);
+        return gen;
+    }
+    public static Vector<SpecialiteEmploye> listSpecialiteEmp(int id_emp) throws Exception {
+        Connection connection=new Connexion().getConnexion();
+        Vector<SpecialiteEmploye> gen=listSpecialiteEmp(connection,id_emp);
+        connection.close();
+        return gen;
+    }
+
+    /** LIST IDS */
 
     public static Vector<Integer> listeIdSpecialites(Connection connection) throws SQLException {
         String querry="select id from specialite";
@@ -65,6 +94,8 @@ public class EmployeDAO {
         return id;
     }
 
+
+    /** GET IDS */
     public static int getNiveauEtudeID(String niveauEtude,Connection connection) throws Exception {
         Vector<NiveauEtude> niv=listeNiveauEtude(connection,"");
         Vector<Integer> id=listeIdNiveauEtude(connection);
@@ -91,11 +122,13 @@ public class EmployeDAO {
         return id.get(index);
     }
 
+
+
     public static void main(String[] args) throws Exception {
         Connection connection=new Connexion().getConnexion();
 
-        System.out.println(getNiveauEtudeID("Bac +5 ",connection));
-
+            Vector<EmployeDetail> e=listeEmployeDetail(connection,"");
+        System.out.println(e.size());
         connection.close();
     }
 

@@ -28,7 +28,6 @@ insert into niveauEtude (description) values ('Bac +7 ');
 
 
 
-drop table specialite;
 create table specialite(
     id serial primary key,
     specialite varchar(60)
@@ -80,7 +79,7 @@ CREATE TABLE Client (
  nom varchar(50) NOT NULL,
  prenom varchar(50) NOT NULL,
 --  Cartebancaire integer NOT NULL,
- numero integer
+ numero varchar(10)
  );
 
 
@@ -115,7 +114,7 @@ create table vehicule(
 );
 
 
-drop table typeservice cascade ;
+-- drop table typeservice cascade ;
 create table typeservice(
     id serial primary key,
     service varchar(50),
@@ -134,7 +133,14 @@ create table specialiteEmploye_typeService(
 
 
 
+create table demandeDevis(
+                             id serial primary key,
+                             idclient integer references client(id),
+                             typeservice integer references typeservice(id),
+                             date_demande date,
+                             montant double precision check (montant>0)
 
+);
 
 create table serviceeffectue(
     id serial primary key,
@@ -188,14 +194,7 @@ create table ventepiece(
     date_vente date,
     isservice integer references serviceeffectue(id)
 );
-create table demandeDevis(
-    id serial primary key,
-    idclient integer references client(id),
-    typeservice integer references typeservice(id),
-    date_demande date,
-    montant double precision check (montant>0)
 
-);
 
 
 -- Loyer sa jirama sa inona etc
@@ -213,7 +212,7 @@ create table depense(
 
 -- Salaire fa raha tsy angatahana hoe
 create table Salaire(
-    id integer primary key,
+    id serial primary key,
     idemploye integer references employe(id),
     montant double precision check (montant>0),
     date_payement date
@@ -223,18 +222,7 @@ create table Salaire(
 
 -- But ; benefice = vente - depense
 
--- vues
-create view employedetail as select employe.nom as nom,
-                                    employe.prenom as prenom,
-                                    employe.datenaissance as datenaissance,
-                                    n.description as niveauetude,
-                                    g.genre as genre,
-                                    sal.montant as salairemontant,
-                                    sal.montant/(30/8) as salaireHoraire
-                             from employe
-                                      join niveauetude n on employe.idniveauetude = n.id
-                                      join salaire sal on employe.id = sal.idemploye
-                                      join genre g on employe.idgenre = g.id
+
 
 
 
