@@ -5,7 +5,7 @@ import manipDb.ObjetBDD;
 import java.sql.Date;
 
 public class EmployeDetail extends ObjetBDD {
-//    int id_employe;
+    int id_employe;
     String nom;
     String prenom;
     Date dateNaissance;
@@ -15,26 +15,27 @@ public class EmployeDetail extends ObjetBDD {
     double salaireMontant;
     double salaireHoraire;
 
-    public EmployeDetail(String nom, String prenom, Date dateNaissance, String genre, double salaireMontant, double salaireHoraire) {
-//        setId_employe(id_employe);
+    public EmployeDetail(int idemploye,String nom, String prenom, Date dateNaissance, String genre, double salaireMontant, double salaireHoraire, String niveauEtude) {
+        setId_employe(idemploye);
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
         this.genre = genre;
         this.salaireMontant = salaireMontant;
         this.salaireHoraire = salaireHoraire;
+        setNiveauEtude(niveauEtude);
     }
 
     public EmployeDetail() {
     }
 
- /*   public int getId_employe() {
+    public int getId_employe() {
         return id_employe;
     }
 
     public void setId_employe(int id_employe) {
         this.id_employe = id_employe;
-    }*/
+    }
 
     public String getNiveauEtude() {
         return niveauEtude;

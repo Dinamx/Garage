@@ -31,7 +31,7 @@ public class PrepaInsertEmp extends HttpServlet {
         try {
             Vector<NiveauEtude> niveauEtudes = EmployeDAO.listeNiveauEtude(connection, "");
             Vector<Specialite> specialites = EmployeDAO.listeSpecialites(connection, "");
-            Vector<EmployeDetail> employeDetails=EmployeDAO.listeEmployeDetail(connection,"");
+            Vector<EmployeDetail> employeDetails=EmployeDAO.listeEmployeDetail2(connection);
             request.setAttribute("niveauEtude", niveauEtudes);
             request.setAttribute("specialites", specialites);
             request.setAttribute("employedetail", employeDetails);

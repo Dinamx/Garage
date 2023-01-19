@@ -7,10 +7,7 @@ import model.Specialite;
 import model.SpecialiteEmploye;
 import views.EmployeDetail;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Vector;
 
@@ -51,6 +48,26 @@ public class EmployeDAO {
             gen.add((EmployeDetail) list[i]);
         }
         return gen;
+    }
+
+    public static Vector<EmployeDetail> listeEmployeDetail2(Connection connection) throws SQLException {
+        String querry="select * from employedetail";
+        PreparedStatement preparedStatement= connection.prepareStatement(querry);
+        ResultSet res= preparedStatement.executeQuery();
+        Vector<EmployeDetail> emp=new Vector<>();
+        while (res.next())
+        {
+            int idemp=res.getInt(res.findColumn("id_employe"));
+            String nom=res.getString(res.findColumn("nom"));
+            String prenom=res.getString(res.findColumn("prenom"));
+            Date dateNaissance=res.getDate(res.findColumn("dateNaissance"));
+            String niveauEtude=res.getString(res.findColumn("niveauetude"));
+            String genre=res.getString(res.findColumn("genre"));
+            double salaireMontant=res.getDouble(res.findColumn("salairemontant"));
+            double salaireHoraire=res.getDouble(res.findColumn("salairehoraire"));
+            emp.add(new EmployeDetail(idemp,nom,prenom,dateNaissance,genre,salaireMontant,salaireHoraire,niveauEtude));
+        }
+        return emp;
     }
     public static Vector<SpecialiteEmploye> listSpecialiteEmp(Connection connection,int id_emp) throws Exception {
         Object [] spec=new SpecialiteEmploye().findAll(connection,"idemploye="+id_emp);

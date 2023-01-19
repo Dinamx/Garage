@@ -218,6 +218,13 @@ create table Salaire(
     date_payement date
 );
 
+-- misy ny stock -na pieces rehetra miaraka @ quantite actuelle
+create table StockProduit(
+    id serial primary key ,
+    idPiece integer references piece,
+    quantite double precision
+)
+
 
 
 -- But ; benefice = vente - depense

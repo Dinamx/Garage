@@ -21,6 +21,8 @@ VALUES ('Changement d''huile', 30, 30),
        ('inspections planifiées', 30, 30);
 
 -- marque
+
+INSERT INTO marque (marque) VALUES ('');
 INSERT INTO marque (marque) VALUES ('Toyota');
 INSERT INTO marque (marque) VALUES ('BMW');
 INSERT INTO marque (marque) VALUES ('Honda');
@@ -31,32 +33,39 @@ INSERT INTO marque (marque) VALUES ('Peugeot');
 INSERT INTO marque (marque) VALUES ('Citroen');
 
 --modele
-INSERT INTO modele (marque, idmarque) VALUES ('Camry', 1);
-INSERT INTO modele (marque, idmarque) VALUES ('3 Series', 2);
-INSERT INTO modele (marque, idmarque) VALUES ('Civic', 3);
-INSERT INTO modele (marque, idmarque) VALUES ('S-Class', 4);
-INSERT INTO modele (marque, idmarque) VALUES ('Mustang', 5);
-INSERT INTO modele (marque, idmarque) VALUES ('Clio', 6);
-INSERT INTO modele (marque, idmarque) VALUES ('308', 7);
-INSERT INTO modele (marque, idmarque) VALUES ('C3', 8);
+INSERT INTO modele (modele, idmarque)VALUES ('Camry', 1);
+INSERT INTO modele (modele, idmarque)VALUES ('3 Series', 2);
+INSERT INTO modele (modele, idmarque)VALUES ('Civic', 3);
+INSERT INTO modele (modele, idmarque)VALUES ('S-Class', 4);
+INSERT INTO modele (modele, idmarque)VALUES ('Mustang', 5);
+INSERT INTO modele (modele, idmarque)VALUES ('Clio', 6);
+INSERT INTO modele (modele, idmarque)VALUES ('308', 7);
+INSERT INTO modele (modele, idmarque)VALUES ('C3', 8);
 
 -- unite
-
+INSERT INTO unite (unite) VALUES ('unite');
+INSERT INTO unite (unite) VALUES ('kg');
+INSERT INTO unite (unite) VALUES ('L');
+INSERT INTO unite (unite) VALUES ('m');
+INSERT INTO unite (unite) VALUES ('cm');
+INSERT INTO unite (unite) VALUES ('g');
+INSERT INTO unite (unite) VALUES ('ml');
+INSERT INTO unite (unite) VALUES ('mm');
 -- piece
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Moteur', 1, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Boîte de vitesse', 2, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Plaquettes de frein', 3, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Pneus', 4, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Alternateur', 5, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Radiateur', 6, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Batterie', 7, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Moteur', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Boîte de vitesse', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Plaquettes de frein', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Pneus', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Alternateur', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Radiateur', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Batterie', 8, 1);
 INSERT INTO piece (piece, idunite, idmodele) VALUES ('Suspension', 8, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Echappement', 9, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Système de direction', 10, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Filtre à air', 11, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Filtre à essence', 12, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Courroie de distribution', 13, 1);
-INSERT INTO piece (piece, idunite, idmodele) VALUES ('Thermostat', 14, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Echappement', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Système de direction', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Filtre à air', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Filtre à essence', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Courroie de distribution', 8, 1);
+INSERT INTO piece (piece, idunite, idmodele) VALUES ('Thermostat', 8, 1);
 
 -- employes
 INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Doe', 'John', '1990-01-01', 1, 1);
