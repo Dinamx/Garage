@@ -20,8 +20,8 @@
         <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/PrepaAccueil">Accueil</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaInsertEmp">Employes</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaInsertPiece">Pieces</a></li>
-        <li><a class="nav-link scrollto" href="#">Services</a></li>
-        <li><a class="nav-link scrollto " href="#">Benefice</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaDemandeDevis">Services</a></li>
+        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">Benefice</a></li>
         <li><a class="nav-link scrollto" href="#">Depense</a></li>
         <li><a class="nav-link scrollto" href="#">Log out</a></li>
       </ul>

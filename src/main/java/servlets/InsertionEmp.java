@@ -48,8 +48,11 @@ public class InsertionEmp extends HttpServlet {
         String nom=request.getParameter("nom");
         String prenom=request.getParameter("prenom");
         String dateNaissance=request.getParameter("dateNaissance");
+        String numeroTelephone=request.getParameter("telephone");
+
         String genres=request.getParameter("genre");
         int id_genre= Objects.equals(genres, "homme") ? 1:2;
+
         int id_niveau= 0;
         try {
             id_niveau = EmployeDAO.getNiveauEtudeID(request.getParameter("idNiveauEtude"),connection);
@@ -59,10 +62,11 @@ public class InsertionEmp extends HttpServlet {
 /** CREATE AN EMPLOYE */
         Employe insertedEmp= null;
         try {
-            insertedEmp = new Employe(nom,prenom, Date.valueOf(dateNaissance),id_niveau,id_genre);
+            insertedEmp = new Employe(nom,prenom, Date.valueOf(dateNaissance),id_genre,id_niveau,numeroTelephone);
             out.println("done");
-        } catch (AgeExceptions e) {
-            throw new RuntimeException(e);
+        }// TODO: 21/01/2023  redirection d'erreurs
+        catch (AgeExceptions e) {
+
         }
 /** VERIFY IF THE FIELDS INSERTED ARE NOT NULL */
         try {
@@ -96,10 +100,11 @@ public class InsertionEmp extends HttpServlet {
             throw new RuntimeException();
         }
 
-        response.sendRedirect("employe.jsp");
+//        response.sendRedirect("employe.jsp");
         /** close connexion*/
         try {
             connection.close();
+            request.getRequestDispatcher("/PrepaInsertEmp").forward(request,response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

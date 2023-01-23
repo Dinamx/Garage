@@ -7,6 +7,7 @@
 <%@ page import="model.SpecialiteEmploye" %>
 <% String title="employes";%>
 <%@include file="inc/head.jsp"%>
+<%@include file="inc/head_add.jsp"%>
 
 <%
 
@@ -21,28 +22,31 @@
 
 
     <!-- table liste -->
-    <div class="tab">
+    <div class="tab mycontainer">
         <h2 class="text">Listes Employes</h2>
         <div class="table-responsive">
             <table class="table">
+                <thead style="position: sticky; top: 0" class="thead-dark" >
                 <tr class="tete">
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Numero de telephone</th>
-                    <th>Date de naissance</th>
-                    <th>Genre</th>
-                    <th>Niveau d'etude</th>
-                    <th>Listes specialites</th>
-                    <th>Salaire mensuel</th>
-                    <th>Salaire horaire</th>
+                    <th class="header">Nom</th>
+                    <th class="header">Prenom</th>
+                    <th class="header">Numero de telephone</th>
+                    <th class="header">Date de naissance</th>
+                    <th class="header">Genre</th>
+                    <th class="header">Niveau d'etude</th>
+                    <th class="header">Listes specialites</th>
+                    <th class="header">Salaire mensuel</th>
+                    <th class="header">Salaire horaire</th>
                 </tr>
+                </thead>
+                <tbody>
                 <% for (int i = 0; i < employeDetails.size(); i++) {
 
                 %>
                 <tr class="anatiny">
                     <td><%= employeDetails.get(i).getNom()%></td>
                     <td><%= employeDetails.get(i).getPrenom()%></td>
-                    <td></td>
+                    <td><%=employeDetails.get(i).getNumerotelephone()%></td>
                     <td><%= employeDetails.get(i).getDateNaissance()%></td>
                     <td><%= employeDetails.get(i).getGenre()%></td>
                     <td><%= employeDetails.get(i).getNiveauEtude()%></td>
@@ -67,6 +71,7 @@
                     <td><%= employeDetails.get(i).getSalaireHoraire()%></td>
                 </tr>
                 <%}%>
+                </tbody>
             </table>
         </div>
     </div>
@@ -110,14 +115,23 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="name">téléphone</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="tel" name="telephone">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="name">Genre</div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="idgenre">
-                                            <option value="homme">homme</option>
-                                            <option value="femme">femme</option>
+                                            <option value="1">homme</option>
+                                            <option value="2">femme</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>

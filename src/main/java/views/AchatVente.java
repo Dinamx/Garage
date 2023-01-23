@@ -3,11 +3,20 @@ package views;
 import manipDb.ObjetBDD;
 
 public class AchatVente extends ObjetBDD {
+    int idPiece;
     String descriptionpiece;
     double piecesAchetes;
     String modele;
     double nombreVendue;
-    double montant;
+
+
+    public int getIdPiece() {
+        return idPiece;
+    }
+
+    public void setIdPiece(int idPiece) {
+        this.idPiece = idPiece;
+    }
 
     public String getDescriptionpiece() {
         return descriptionpiece;
@@ -41,20 +50,13 @@ public class AchatVente extends ObjetBDD {
         this.nombreVendue = nombreVendue;
     }
 
-    public double getMontant() {
-        return montant;
-    }
 
-    public void setMontant(double montant) {
-        this.montant = montant;
-    }
-
-    public AchatVente(String descriptionpiece, double piecesAchetes, String modele, double nombreVendue, double montant) {
+    public AchatVente(String descriptionpiece, double piecesAchetes, String modele, double nombreVendue, int idPiece) {
         this.descriptionpiece = descriptionpiece;
         this.piecesAchetes = piecesAchetes;
         this.modele = modele;
         this.nombreVendue = nombreVendue;
-        this.montant = montant;
+        setIdPiece(idPiece);
     }
 
     public AchatVente() {

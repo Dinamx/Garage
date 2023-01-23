@@ -5,7 +5,7 @@ create table admin(
 );
 
 
-insert into admin values(default , 'admin1','admin1');
+insert into admin values(default , 'admin1@gmail.com','admin1');
 
 create table genre (
     id serial primary key,
@@ -30,21 +30,17 @@ insert into niveauEtude (description) values ('Bac +7 ');
 
 create table specialite(
     id serial primary key,
-    specialite varchar(60)
+    specialite varchar(60),
+    salaire decimal(10,2)
 );
 
 
-insert into specialite (specialite) values ('monteur');
-insert into specialite (specialite) values ('electricien');
-insert into specialite (specialite) values ('controleur');
-insert into specialite (specialite) values ('mecanicien');
-insert into specialite (specialite) values ('technicien');
-insert into specialite (specialite) values ('comptable');
-
-
-
-
-
+insert into specialite (specialite,salaire) values ('monteur',100000);
+insert into specialite (specialite,salaire) values ('electricien',200000);
+insert into specialite (specialite,salaire) values ('controleur',30000000);
+insert into specialite (specialite,salaire) values ('mecanicien',10020000);
+insert into specialite (specialite,salaire) values ('technicien',40000);
+insert into specialite (specialite,salaire) values ('comptable',4000000);
 
 CREATE TABLE employe (
     id serial primary key,
@@ -52,9 +48,9 @@ CREATE TABLE employe (
     prenom varchar(50) ,
     DateNaissance date  ,
     idgenre integer references genre(id) ,
-    idNiveauEtude integer references niveauEtude(id)
+    idNiveauEtude integer references niveauEtude(id),
+    numerotelephone varchar(15)
 );
-
 
 insert into employe values(default , 'Jean', 'De Dieu','2000-12-01',1,2 );
 
@@ -62,10 +58,6 @@ create table specialiteemploye(
     idspecialite integer references specialite(id),
     idemploye integer references employe(id)
 );
-
-
-
-
 
 create table Salaireemploye(
     id serial primary key,
@@ -91,7 +83,7 @@ create table marque(
 
 create table modele(
     id serial primary key,
-    marque varchar(50),
+    modele varchar(50),
     idmarque integer references marque(id)
 );
 
@@ -100,7 +92,6 @@ create table typevehicule(
     id serial primary key,
     type varchar(30)
 );
-
 
 create table vehicule(
     id serial primary key,
@@ -118,13 +109,9 @@ create table vehicule(
 create table typeservice(
     id serial primary key,
     service varchar(50),
-    prix double precision check (prix>0),
-    duree_supposee int
+    prix double precision check (prix>0)
 );
-
-select * from typeservice;
-
-
+alter table typeservice add margeBeneficiaire double precision;
 
 create table specialiteEmploye_typeService(
     idSpecialiteEmploye integer references specialite(id),
@@ -150,11 +137,6 @@ create table serviceeffectue(
     duree integer,
     iddemande_devis integer references demandeDevis(id)
 );
-
-
-
-
-
 create table serviceemploye(
     idserviceeffecute integer references serviceeffectue(id),
     idemploye integer references employe(id)
@@ -195,8 +177,6 @@ create table ventepiece(
     isservice integer references serviceeffectue(id)
 );
 
-
-
 -- Loyer sa jirama sa inona etc
 create table typedepense(
     id serial primary key,
@@ -208,8 +188,6 @@ create table depense(
     montant double precision check (montant>0)
 );
 
-
-
 -- Salaire fa raha tsy angatahana hoe
 create table Salaire(
     id serial primary key,
@@ -219,11 +197,11 @@ create table Salaire(
 );
 
 -- misy ny stock -na pieces rehetra miaraka @ quantite actuelle
-create table StockProduit(
+/*create table StockProduit(
     id serial primary key ,
     idPiece integer references piece,
     quantite double precision
-)
+)*/
 
 
 

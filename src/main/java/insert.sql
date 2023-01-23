@@ -2,23 +2,23 @@
 
 
 -- services
-INSERT INTO typeservice (service, prix, duree_supposee)
-VALUES ('Changement d''huile', 30, 30),
-       ('Rotation et équilibrage des pneus', 30, 30),
-       ('Réparation et remplacement des freins', 120, 120),
-       ('Remplacement de la batterie', 30, 30),
-       ('réparation du moteur', 120, 120),
-       ('Diagnostic  du moteur', 120, 120),
-       ('remplacement de la transmission', 240, 240),
-       ('Réparation de la transmission', 240, 240),
-       ('Réparations de la suspension et de la direction', 120, 120),
-       ('Réparations de la direction', 120, 120),
-       ('remplacement du système d''échappement', 120, 120),
-       ('Réparation du système d''échappement', 120, 120),
-       ('Réparations de la climatisation ', 120, 120),
-       ('Réparations  du chauffage', 120, 120),
-       ('Entretien régulier ', 30, 30),
-       ('inspections planifiées', 30, 30);
+INSERT INTO typeservice (service, prix,margebeneficiaire)
+VALUES ('Changement d''huile', 30,10),
+       ('Rotation et équilibrage des pneus', 30,15),
+       ('Réparation et remplacement des freins', 120,10),
+       ('Remplacement de la batterie', 30,20),
+       ('réparation du moteur', 120,5),
+       ('Diagnostic  du moteur', 120,10),
+       ('remplacement de la transmission', 240,10),
+       ('Réparation de la transmission', 240,20),
+       ('Réparations de la suspension et de la direction', 120,25),
+       ('Réparations de la direction', 120),
+       ('remplacement du système d''échappement', 120),
+       ('Réparation du système d''échappement', 120),
+       ('Réparations de la climatisation ', 120),
+       ('Réparations  du chauffage', 120),
+       ('Entretien régulier ', 30),
+       ('inspections planifiées', 30);
 
 -- marque
 
@@ -68,15 +68,15 @@ INSERT INTO piece (piece, idunite, idmodele) VALUES ('Courroie de distribution',
 INSERT INTO piece (piece, idunite, idmodele) VALUES ('Thermostat', 8, 1);
 
 -- employes
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Doe', 'John', '1990-01-01', 1, 1);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Smith', 'Jane', '1995-03-15', 2, 2);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Johnson', 'Bob', '1985-05-20', 1, 3);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Williams', 'Emily', '1980-07-10', 2, 1);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Martin', 'Luc', '1995-10-12', 1, 2);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Lévesque', 'Marie', '1985-05-20', 2, 3);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Gagnon', 'Julie', '1980-07-10', 2, 1);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Bélanger', 'Guillaume', '1990-01-01', 1, 2);
-INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude) VALUES ('Gauthier', 'Sophie', '1995-03-15', 2, 3);
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Doe', 'John', '1990-01-01', 1, 1,'+261341872561');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Smith', 'Jane', '1995-03-15', 2, 2,'+261342923131');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Johnson', 'Bob', '1985-05-20', 1, 3,'+261320229106');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Williams', 'Emily', '1980-07-10', 2, 1,'+261347067949');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Martin', 'Luc', '1995-10-12', 1, 2,'+261331895561');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Lévesque', 'Marie', '1985-05-20', 2, 3,'+261322259024');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Gagnon', 'Julie', '1980-07-10', 2, 1,'+261345567864');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Bélanger', 'Guillaume', '1990-01-01', 1, 2,'+261329932176');
+INSERT INTO employe (nom, prenom, datenaissance, idgenre, idniveauetude,numerotelephone) VALUES ('Gauthier', 'Sophie', '1995-03-15', 2, 3,'+261334567653');
 
 -- type vehicule
 INSERT INTO typevehicule (type) VALUES ('Voiture');

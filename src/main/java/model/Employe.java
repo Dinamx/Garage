@@ -16,10 +16,19 @@ public class Employe extends ObjetBDD {
     Date dateNaissance;
     int idGenre;
     int idNiveauEtude;
+    String numerotelephone;
 
 
+    public String getNumerotelephone() {
+        return numerotelephone;
+    }
+
+    public void setNumerotelephone(String numerotelephone) {
+        this.numerotelephone = numerotelephone;
+    }
 
     /** SETTERS - GETTERS*/
+
     public String getNom() {
         return nom;
     }
@@ -74,12 +83,13 @@ public class Employe extends ObjetBDD {
 
     }
 
-    public Employe(String nom, String prenom, Date dateNaissance, int idGenre, int idNiveauEtude) throws AgeExceptions {
+    public Employe(String nom, String prenom, Date dateNaissance, int idGenre, int idNiveauEtude, String numerotelephone) throws AgeExceptions {
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);
         setIdGenre(idGenre);
         setIdNiveauEtude(idNiveauEtude);
+        setNumerotelephone(numerotelephone);
     }
 /** METHODS*/
     public boolean valueControl () throws EmptyFieldException {

@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class AchatPiece extends ObjetBDD {
+
     int idPiece;
     double nombre;
     Date date_achat;

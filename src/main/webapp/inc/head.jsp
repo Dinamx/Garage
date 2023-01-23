@@ -39,5 +39,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/insertCss.css" rel="stylesheet" media="all">
+  <link href="assets/css/me.css" rel="stylesheet" media="all">
   <title><%=title%></title>
 </head>

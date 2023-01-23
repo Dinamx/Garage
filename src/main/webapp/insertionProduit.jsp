@@ -21,7 +21,7 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Insertion Produit</h2>
+                    <h2 class="title">Insertion de nouvelle piece </h2>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="${pageContext.request.contextPath}/InsertionProduit">
@@ -99,22 +99,6 @@
     </div>
     <!-- end formulaire insertion -->
 
-    <!-- table liste -->
-  <h2 class="text">Listes des produits en stock</h2>
-  <div class="table-responsive">
-    <table class="table">
-      <tr class="tete"> 
-        <th>Piece</th>
-        <th>Prix</th>
-        <th>Quantite</th>
-      </tr>
-      <tr class="anatiny">
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
   <!-- end table liste -->
 
   

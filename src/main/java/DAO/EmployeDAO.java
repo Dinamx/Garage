@@ -62,10 +62,11 @@ public class EmployeDAO {
             String prenom=res.getString(res.findColumn("prenom"));
             Date dateNaissance=res.getDate(res.findColumn("dateNaissance"));
             String niveauEtude=res.getString(res.findColumn("niveauetude"));
+            String telephone=res.getString(res.findColumn("numerotelephone"));
             String genre=res.getString(res.findColumn("genre"));
             double salaireMontant=res.getDouble(res.findColumn("salairemontant"));
             double salaireHoraire=res.getDouble(res.findColumn("salairehoraire"));
-            emp.add(new EmployeDetail(idemp,nom,prenom,dateNaissance,genre,salaireMontant,salaireHoraire,niveauEtude));
+            emp.add(new EmployeDetail(idemp,nom,prenom,dateNaissance,genre,telephone,salaireMontant,salaireHoraire,niveauEtude));
         }
         return emp;
     }

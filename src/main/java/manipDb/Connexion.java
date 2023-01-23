@@ -15,8 +15,8 @@ public class Connexion {
     Connection cnt;
     Statement stm;
     ResultSet res;
-    String user = "postgres";
-    String password = "root";
+    String user = "priscafehiarisoadama";
+    String password = "";
     String base = "garage";
 
     public Connexion() {

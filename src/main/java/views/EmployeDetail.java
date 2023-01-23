@@ -10,12 +10,13 @@ public class EmployeDetail extends ObjetBDD {
     String prenom;
     Date dateNaissance;
     String niveauEtude;
+    String numerotelephone;
 
     String genre;
     double salaireMontant;
     double salaireHoraire;
 
-    public EmployeDetail(int idemploye,String nom, String prenom, Date dateNaissance, String genre, double salaireMontant, double salaireHoraire, String niveauEtude) {
+    public EmployeDetail(int idemploye,String nom, String prenom, Date dateNaissance, String genre,String numerotelephone, double salaireMontant, double salaireHoraire, String niveauEtude) {
         setId_employe(idemploye);
         this.nom = nom;
         this.prenom = prenom;
@@ -24,6 +25,16 @@ public class EmployeDetail extends ObjetBDD {
         this.salaireMontant = salaireMontant;
         this.salaireHoraire = salaireHoraire;
         setNiveauEtude(niveauEtude);
+        setNumerotelephone(numerotelephone);
+
+    }
+
+    public String getNumerotelephone() {
+        return numerotelephone;
+    }
+
+    public void setNumerotelephone(String numerotelephone) {
+        this.numerotelephone = numerotelephone;
     }
 
     public EmployeDetail() {

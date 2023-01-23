@@ -75,7 +75,28 @@ public class PiecesDAO {
         {
             r= res.getInt(res.findColumn("id"));
         }
+        preparedStatement.close();
         return r;
+    }
+
+    public static int getPieceId(Piece piece) throws SQLException {
+        Connection connection=new Connexion().getConnexion();
+        int id= getPieceId(piece,connection);
+        connection.close();
+        return id;
+    }
+    public static Piece getPiece(int id, Connection connection) throws SQLException {
+        String querry="select * from piece where id="+id;
+        PreparedStatement preparedStatement=connection.prepareStatement(querry);
+        ResultSet res=preparedStatement.executeQuery();
+        Piece piece = null;
+        while(res.next()){
+            String pieces= res.getString(res.findColumn("piece"));
+            int idUnite= res.getInt(res.findColumn("idunite"));
+            int idmodele= res.getInt(res.findColumn("idmodele"));
+           piece=new Piece(pieces,idUnite,idmodele);
+        }
+        return piece;
     }
 
     public static void main(String[] args) throws Exception {
