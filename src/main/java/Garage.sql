@@ -71,7 +71,7 @@ CREATE TABLE Client (
  nom varchar(50) NOT NULL,
  prenom varchar(50) NOT NULL,
 --  Cartebancaire integer NOT NULL,
- numero varchar(10)
+ numero varchar(20)
  );
 
 

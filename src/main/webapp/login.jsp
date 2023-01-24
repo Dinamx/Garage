@@ -8,6 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String title="login";%>
 <%@include file="inc/head.jsp"%>
+<%
+    if(request.getAttribute("erreur")!=null)
+    {
+        out.print("diso eee");
+    }
+    else{
+        out.print("tsisy olana");
+    }
+%>
 <html>
 <head>
     <title>Title</title>
@@ -28,7 +37,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-6 col-xl-4">
                 <div>
-                    <form class="p-3 p-xl-4" method="post">
+                    <form class="p-3 p-xl-4" method="post" action="${pageContext.request.contextPath}/Login">
                         <div class="mb-3">
                             <input class="form-control" type="email" id="email-1" name="email" placeholder="Email" required>
                         </div>

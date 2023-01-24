@@ -12,13 +12,13 @@ VALUES ('Changement d''huile', 30,10),
        ('remplacement de la transmission', 240,10),
        ('Réparation de la transmission', 240,20),
        ('Réparations de la suspension et de la direction', 120,25),
-       ('Réparations de la direction', 120),
-       ('remplacement du système d''échappement', 120),
-       ('Réparation du système d''échappement', 120),
-       ('Réparations de la climatisation ', 120),
-       ('Réparations  du chauffage', 120),
-       ('Entretien régulier ', 30),
-       ('inspections planifiées', 30);
+       ('Réparations de la direction', 120,10),
+       ('remplacement du système d''échappement', 120,10),
+       ('Réparation du système d''échappement', 120,5),
+       ('Réparations de la climatisation ', 120,5),
+       ('Réparations  du chauffage', 120,7),
+       ('Entretien régulier ', 30,7),
+       ('inspections planifiées', 30,10);
 
 -- marque
 
@@ -33,6 +33,7 @@ INSERT INTO marque (marque) VALUES ('Peugeot');
 INSERT INTO marque (marque) VALUES ('Citroen');
 
 --modele
+INSERT INTO modele (modele, idmarque)VALUES ('', 1);
 INSERT INTO modele (modele, idmarque)VALUES ('Camry', 1);
 INSERT INTO modele (modele, idmarque)VALUES ('3 Series', 2);
 INSERT INTO modele (modele, idmarque)VALUES ('Civic', 3);

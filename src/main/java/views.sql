@@ -14,7 +14,7 @@ create view employedetail as select employe.id as id_employe,
                                       join niveauetude n on employe.idniveauetude = n.id
                                       left outer join salaire sal on employe.id = sal.idemploye
                                       join genre g on employe.idgenre = g.id;
-select employe.id as id_employe,
+/*select employe.id as id_employe,
                                  employe.nom as nom,
                                     employe.prenom as prenom,
                                     employe.datenaissance as datenaissance,
@@ -26,7 +26,7 @@ select employe.id as id_employe,
                              from employe
                                       join niveauetude n on employe.idniveauetude = n.id
                                       left outer join salaire sal on employe.id = sal.idemploye
-                                      join genre g on employe.idgenre = g.id;
+                                      join genre g on employe.idgenre = g.id;*/
 
 select employe.id , coalesce(montant,0) from employe  left outer join salaire s on employe.id = coalesce(s.idemploye,employe.id);
 

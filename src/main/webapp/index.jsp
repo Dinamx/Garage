@@ -7,5 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    response.sendRedirect(request.getContextPath() + "/PrepaAccueil");
+    if(request.getAttribute("admin")!=null) {
+        response.sendRedirect(request.getContextPath() + "/PrepaAccueil");
+    }
+    else{
+        response.sendRedirect("login.jsp");
+    }
+    out.print("cool");
 %>
