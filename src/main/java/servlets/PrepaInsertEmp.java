@@ -11,6 +11,7 @@ import model.Genre;
 import model.NiveauEtude;
 import model.Specialite;
 import views.EmployeDetail;
+import views.SpecEmp;
 
 /*import javax.servlet.*;
 import javax.servlet.http.*;
@@ -30,17 +31,20 @@ public class PrepaInsertEmp extends HttpServlet {
 //
         try {
             Vector<NiveauEtude> niveauEtudes = EmployeDAO.listeNiveauEtude(connection, "");
-            Vector<Specialite> specialites = EmployeDAO.listeSpecialites(connection, "");
             Vector<EmployeDetail> employeDetails=EmployeDAO.listeEmployeDetail2(connection);
+            Vector<Specialite> spec=EmployeDAO.listeSpecialites(connection,"");
+            Vector<Vector<SpecEmp>> specialites = EmployeDAO.specialitesEmplist(connection,employeDetails);
+
             request.setAttribute("niveauEtude", niveauEtudes);
             request.setAttribute("specialites", specialites);
+            request.setAttribute("listespecialite",spec);
             request.setAttribute("employedetail", employeDetails);
 
             request.getRequestDispatcher("employe.jsp").forward(request,response);
         } catch(Exception e)
 
         {
-            throw new RuntimeException();
+            e.printStackTrace();
         }
         }
 

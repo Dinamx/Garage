@@ -207,7 +207,9 @@ create table Salaire(
 
 -- But ; benefice = vente - depense
 
-
+create table service_besionemp(idspecialites int references specialite(id),
+        idtypeservices int references typeservice(id),
+        nombre int );
 
 
 

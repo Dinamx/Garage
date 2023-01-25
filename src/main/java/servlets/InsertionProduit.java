@@ -41,7 +41,8 @@ public class InsertionProduit extends HttpServlet {
             }
             AchatPiece stock=new AchatPiece(idPiece,quantite,prixAchat);
             stock.insert(connection);
-            request.getRequestDispatcher("/PrepaInsertPiece").forward(request,response);
+//            request.getRequestDispatcher("/PrepaInsertPiece").forward(request,response);
+            response.sendRedirect(request.getContextPath()+"/PrepaInsertPiece");
 
 
             /** end config */

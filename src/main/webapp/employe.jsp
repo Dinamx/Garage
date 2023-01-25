@@ -5,6 +5,7 @@
 <%@ page import="DAO.EmployeDAO" %>
 <%@ page import="views.EmployeDetail" %>
 <%@ page import="model.SpecialiteEmploye" %>
+<%@ page import="views.SpecEmp" %>
 <% String title="employes";%>
 <%@include file="inc/head.jsp"%>
 <%@include file="inc/head_add.jsp"%>
@@ -12,8 +13,9 @@
 <%
 
     Vector <NiveauEtude> niveauEtudes=(Vector<NiveauEtude>)request.getAttribute("niveauEtude");
-    Vector <Specialite> specialites=(Vector<Specialite>)request.getAttribute("specialites");
+    Vector <Vector<SpecEmp>> specialites=(Vector<Vector<SpecEmp>>) request.getAttribute("specialites");
     Vector<EmployeDetail> employeDetails=(Vector<EmployeDetail>) request.getAttribute("employedetail");
+    Vector<Specialite> spec=(Vector<Specialite>) request.getAttribute("listespecialite");
 %>
 <body>
     <!-- ======= Header ======= -->
@@ -50,22 +52,16 @@
                     <td><%= employeDetails.get(i).getDateNaissance()%></td>
                     <td><%= employeDetails.get(i).getGenre()%></td>
                     <td><%= employeDetails.get(i).getNiveauEtude()%></td>
-                    <%
-                        Vector<SpecialiteEmploye> specialiteEmployes= null;
-                        try {
-                            specialiteEmployes = EmployeDAO.listSpecialiteEmp(employeDetails.get(i).getId_employe());
 
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                        StringBuilder strspecialites= new StringBuilder();
-                       /* for (int j = 0; j < specialiteEmployes.size(); j++) {
-                            strspecialites.append(specialiteEmployes.get(i).getIdSpecialite()).append("\t");
-                        }*/
+                    <td>
+                     <%
+
+                            for (int k = 0; k < specialites.get(i).size(); k++) {
+                                out.println(specialites.get(i).get(k).getSpecialite());
+                            }
+
 
                     %>
-                    <td>
-                     <%=strspecialites.toString() %>
                     </td>
                     <td><%= employeDetails.get(i).getSalaireMontant()%></td>
                     <td><%= employeDetails.get(i).getSalaireHoraire()%></td>
@@ -86,17 +82,17 @@
                 <div class="card-body">
 <%--        FORM            --%>
                     <form method="POST" action="${pageContext.request.contextPath}/insertionEmp">
-                        <div class="form-row m-b-55">
+                        <div class="form-row m-b-5">
                             <div class="name">Nom</div>
                             <div class="value">
                                 <div class="row row-space">
-                                    <div class="col-2">
+                                    <div class="col-4">
                                         <div class="input-group-desc">
                                             <input class="input--style-5" type="text" name="prenom">
                                             <label class="label--desc">Prenom</label>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-4">
                                         <div class="input-group-desc">
                                             <input class="input--style-5" type="text" name="nom">
                                             <label class="label--desc">Nom</label>
@@ -117,7 +113,7 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="name">téléphone</div>
+                            <div class="name">telephone</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="tel" name="telephone">
@@ -163,13 +159,13 @@
                             <div class="value">
 
                                         <%
-                                            for (int i = 0; i < specialites.size(); i++) {
+                                            for (int i = 0; i < spec.size(); i++) {
                                         %>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" name="<%=specialites.get(i).getSpecialite()%>" type="checkbox" value="" id="flexCheckDefault<%=i%>">
+                                    <input class="form-check-input" name="<%=spec.get(i).getSpecialite()%>" type="checkbox" value="" id="flexCheckDefault<%=i%>">
                                     <label class="form-check-label" for="flexCheckDefault<%=i%>">
-                                        <%=specialites.get(i).getSpecialite()%>
+                                        <%=spec.get(i).getSpecialite()%>
                                     </label>
                                 </div>
                                         <%}%>

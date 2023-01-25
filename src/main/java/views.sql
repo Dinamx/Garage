@@ -8,8 +8,8 @@ create view employedetail as select employe.id as id_employe,
                                     employe.numerotelephone as numerotelephone,
                                     n.description as niveauetude,
                                     g.genre as genre,
-                                     coalesce(sal.montant ,0) as salairemontant,
-                                    sal.montant/(30*8) as salaireHoraire
+                                     coalesce(getsalaire(employe.id) ,0) as salairemontant,
+                                    coalesce(getsalaire(employe.id)/(30*8),0) as salaireHoraire
                              from employe
                                       join niveauetude n on employe.idniveauetude = n.id
                                       left outer join salaire sal on employe.id = sal.idemploye
@@ -85,4 +85,27 @@ select * from benefices;
 
 -- Vue salaire minimum par Specialite ()
 
--- s
+-- vue salaire maximum par specialite ()
+create function getsalaire (idEmployee int ) returns double precision
+
+language plpgsql
+as
+    $$
+    declare salaires double precision;
+        begin
+        select max(salaire) into salaires from specialiteemploye
+            join specialite s on specialiteemploye.idspecialite = s.id
+                            where specialiteemploye.idemploye=idEmployee;
+        if(salaires is null) then salaires=0;
+        end if;
+        return salaires;
+    end;
+    $$;
+-- vues specialites employes
+create view specEmp as select idspecialite, idemploye, specialite, salaire from specialiteemploye join specialite s on s.id = specialiteemploye.idspecialite
+-- drop view specEmp;
+
+
+-- view details pieces
+
+create view detailPiece as select piece.id idpiece, piece, unite, modele, marque from piece join unite u on piece.idunite = u.id join modele m on piece.idmodele = m.id join marque m2 on m2.id = m.idmarque

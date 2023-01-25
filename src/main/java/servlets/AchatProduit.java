@@ -33,7 +33,8 @@ public class AchatProduit extends HttpServlet {
 //            todo : de tokony ampiana champ client koa zany
             /*AchatPiece achat=new AchatPiece(id,quantite,prixTotal);
             achat.insert(connection);*/
-            request.getRequestDispatcher("/PrepaAccueil").forward(request,response);
+//            request.getRequestDispatcher("/PrepaAccueil").forward(request,response);
+            response.sendRedirect(request.getContextPath()+"/PrepaAccueil");
 
 
             connection.close();

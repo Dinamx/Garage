@@ -38,16 +38,22 @@ public class Employe extends ObjetBDD {
         return idGenre;
     }
 
-    public void setNom(String nom) {
+    public void setNom(String nom) throws EmptyFieldException {
+        if(nom.trim().equals("")) {
+           throw new EmptyFieldException();
+        }
+        else{
+            this.nom = nom.trim();
+        }
 
-        this.nom = nom.trim();
     }
 
     public String getPrenom() {
         return prenom;
     }
 
-    public void setPrenom(String prenom) {
+    public void setPrenom(String prenom) throws EmptyFieldException {
+        if(prenom.trim().equals("")) throw new EmptyFieldException();
         this.prenom = prenom.trim();
     }
 
@@ -83,7 +89,7 @@ public class Employe extends ObjetBDD {
 
     }
 
-    public Employe(String nom, String prenom, Date dateNaissance, int idGenre, int idNiveauEtude, String numerotelephone) throws AgeExceptions {
+    public Employe(String nom, String prenom, Date dateNaissance, int idGenre, int idNiveauEtude, String numerotelephone) throws AgeExceptions, EmptyFieldException {
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);

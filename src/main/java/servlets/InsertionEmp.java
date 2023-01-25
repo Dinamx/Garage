@@ -39,74 +39,71 @@ public class InsertionEmp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServletException {
 /** connexion base */
-        Connection connection=new Connexion().getConnexion();
+        Connection connection = new Connexion().getConnexion();
         PrintWriter out = response.getWriter();
 
         /**----*/
 
 /** GET DATAS FROM FORM*/
-        String nom=request.getParameter("nom");
-        String prenom=request.getParameter("prenom");
-        String dateNaissance=request.getParameter("dateNaissance");
-        String numeroTelephone=request.getParameter("telephone");
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String dateNaissance = request.getParameter("dateNaissance");
+        String numeroTelephone = request.getParameter("telephone");
 
-        String genres=request.getParameter("genre");
-        int id_genre= Objects.equals(genres, "homme") ? 1:2;
+        String genres = request.getParameter("genre");
+        int id_genre = Objects.equals(genres, "homme") ? 1 : 2;
 
-        int id_niveau= 0;
+        int id_niveau = 0;
         try {
-            id_niveau = EmployeDAO.getNiveauEtudeID(request.getParameter("idNiveauEtude"),connection);
+            id_niveau = EmployeDAO.getNiveauEtudeID(request.getParameter("idNiveauEtude"), connection);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 /** CREATE AN EMPLOYE */
-        Employe insertedEmp= null;
+        Employe insertedEmp = null;
+        String erreur="";
         try {
-            insertedEmp = new Employe(nom,prenom, Date.valueOf(dateNaissance),id_genre,id_niveau,numeroTelephone);
-            out.println("done");
+            insertedEmp = new Employe(nom, prenom, Date.valueOf(dateNaissance), id_genre, id_niveau, numeroTelephone);
+
         }// TODO: 21/01/2023  redirection d'erreurs
         catch (AgeExceptions e) {
+            erreur+="\t"+e.getMessage();
+        }
+        catch (EmptyFieldException empty)
+        {
+            erreur+="\t"+empty.getMessage();
+        }
+        if(erreur!="") {
 
-        }
-/** VERIFY IF THE FIELDS INSERTED ARE NOT NULL */
-        try {
-            insertedEmp.valueControl();
-        } catch (EmptyFieldException e) { // todo : rediriger sur le formulaire pour etre rééditer
-            request.setAttribute("toBeEditedEmploye", insertedEmp);
-            request.getRequestDispatcher("").forward(request,response);
-        }
 /** INSERT EMP TO DBA */
-        int id=-1;
-        try {
-            id=insertedEmp.insertReturning(new Connexion().getConnexion());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            int id = -1;
+            try {
+                id = insertedEmp.insertReturning(new Connexion().getConnexion());
+
 /** INSERT DATA ABOUT SPECIALITIES */
-    // GET DATAS ABOUT SPECIALITIES
-        try {
-            Vector<Specialite> specialites = EmployeDAO.listeSpecialites(connection, "");
-            for (int i = 0; i < specialites.size(); i++) {
-                if(request.getParameter(specialites.get(i).getSpecialite())!=null)
-                {
-                    SpecialiteEmploye specialiteEmploye=new SpecialiteEmploye(EmployeDAO.getSpecialiteId(connection,specialites.get(i).getSpecialite()),id);
-                    specialiteEmploye.insert(connection);
+                // GET DATAS ABOUT SPECIALITIES
+
+                Vector<Specialite> specialites = EmployeDAO.listeSpecialites(connection, "");
+                for (int i = 0; i < specialites.size(); i++) {
+                    if (request.getParameter(specialites.get(i).getSpecialite()) != null) {
+                        SpecialiteEmploye specialiteEmploye = new SpecialiteEmploye(EmployeDAO.getSpecialiteId(connection, specialites.get(i).getSpecialite()), id);
+                        specialiteEmploye.insert(connection);
+                    }
                 }
-            }
-
-        }
-
-        catch (Exception e){
-            throw new RuntimeException();
-        }
 
 //        response.sendRedirect("employe.jsp");
-        /** close connexion*/
-        try {
-            connection.close();
-            request.getRequestDispatcher("/PrepaInsertEmp").forward(request,response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                /** close connexion*/
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            response.sendRedirect(request.getContextPath() + "/PrepaInsertEmp");
         }
+
+        else{
+            out.println("champs vides");
+        }
+//        request.getRequestDispatcher("/PrepaInsertEmp").forward(request,response);
+
     }
 }
