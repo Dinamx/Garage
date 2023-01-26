@@ -5,6 +5,7 @@ import manipDb.ObjetBDD;
 public class SpecEmp extends ObjetBDD {
     int idspecialite;
     int idemploye;
+    String nom;
     String specialite;
     double salaire;
 
@@ -18,6 +19,14 @@ public class SpecEmp extends ObjetBDD {
 
     public int getIdemploye() {
         return idemploye;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public void setIdemploye(int idemploye) {
@@ -40,11 +49,12 @@ public class SpecEmp extends ObjetBDD {
         this.salaire = salaire;
     }
 
-    public SpecEmp(int idspecialite, int idemploye, String specialite, double salaire) {
+    public SpecEmp(int idspecialite,String nom, int idemploye, String specialite, double salaire) {
         this.idspecialite = idspecialite;
         this.idemploye = idemploye;
         this.specialite = specialite;
         this.salaire = salaire;
+        setNom(nom);
     }
 
     public SpecEmp() {

@@ -3,6 +3,7 @@ package model;
 import manipDb.ObjetBDD;
 
 public class Specialite extends ObjetBDD {
+    int id;
     String specialite ;
 
     public String getSpecialite() {
@@ -13,8 +14,17 @@ public class Specialite extends ObjetBDD {
         this.specialite = description;
     }
 
-    public Specialite(String specialite) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Specialite(String specialite, int id) {
         setSpecialite(specialite);
+        setId(id);
     }
 
     public Specialite() {

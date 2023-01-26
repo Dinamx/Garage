@@ -122,21 +122,8 @@
     <!-- end formulaire insertion -->
 
 
-  
-    <!-- Jquery JS-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="assets/vendor/select2/select2.min.js"></script>
-    <script src="assets/vendor/datepicker/moment.min.js"></script>
-    <script src="assets/vendor/datepicker/daterangepicker.js"></script>
 
-    <!-- Main JS-->
-    <script src="assets/js/global.js"></script>
-    <script>
-        function fill()
-        {
+    <%@include file="inc/script.jsp"%>
 
-        }
-    </script>
 </body>
 </html>

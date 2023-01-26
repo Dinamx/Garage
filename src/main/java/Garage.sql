@@ -95,9 +95,9 @@ create table typevehicule(
 
 create table vehicule(
     id serial primary key,
-    idmodele integer,
+    idmodele integer references modele(id),
     immatriculation varchar(10),
-    modele integer references modele(id),
+    idmarque integer references marque(id),
     anneeSortie varchar(4),
     idtype integer references typevehicule(id),
      idclient integer references Client(id)
@@ -138,7 +138,7 @@ create table serviceeffectue(
     iddemande_devis integer references demandeDevis(id)
 );
 create table serviceemploye(
-    idserviceeffecute integer references serviceeffectue(id),
+    idserviceeffectue integer references serviceeffectue(id),
     idemploye integer references employe(id)
 );
 

@@ -46,11 +46,6 @@ $$
 
 select selledProduct(1);
 
-/*select piece,montant,sum(nombre-selledProduct(piece.id))from
-     piece piece join achatpiece on piece.id = achatpiece.idpiece
-group by piece , montant
-*/
-
 -- requette pour avoir la liste des achats du client
 select p.id idpiece,p.piece descriptionpiece, sum(nombre) nombrePiece, modele from achatpiece
     join piece p on achatpiece.idpiece = p.id
@@ -69,7 +64,7 @@ group by p.id) as achat on vente.idPieces=achat.idPieces join modele on idmodele
 create view devis as select idemploye, nom nom_employes, duree duree_service,
                             salaireHoraire, iddemande_devis, typeservice idService,
                             serviceeffectue.id idserviceEffectue  from serviceeffectue
-            join serviceemploye s on serviceeffectue.id = s.idserviceeffecute
+            join serviceemploye s on serviceeffectue.id = s.idserviceeffectue
             join employedetail ed on s.idemploye=ed.id_employe
             join demandedevis d on d.id = serviceeffectue.iddemande_devis;
 ;
@@ -102,10 +97,16 @@ as
     end;
     $$;
 -- vues specialites employes
-create view specEmp as select idspecialite, idemploye, specialite, salaire from specialiteemploye join specialite s on s.id = specialiteemploye.idspecialite
+create view specEmp as select idspecialite, nom ,idemploye, specialite, salaire from specialiteemploye join specialite s on s.id = specialiteemploye.idspecialite join employe e on specialiteemploye.idemploye = e.id
 -- drop view specEmp;
 
 
 -- view details pieces
 
 create view detailPiece as select piece.id idpiece, piece, unite, modele, marque from piece join unite u on piece.idunite = u.id join modele m on piece.idmodele = m.id join marque m2 on m2.id = m.idmarque
+
+-- vues specialites et besoins en employes
+create view service as select typeservice.id id, service, prix, margebeneficiaire, idspecialites, specialite, nombre from typeservice join service_besionemp sb on typeservice.id = sb.idtypeservices join specialite s on sb.idspecialites = s.id
+
+-- liste des employes ayant une specialites
+-- create view select * from specialiteemploye join employe e on specialiteemploye.idemploye = e.id where idspecialite=1

@@ -34,10 +34,10 @@ public class AchatProduit extends HttpServlet {
             /*AchatPiece achat=new AchatPiece(id,quantite,prixTotal);
             achat.insert(connection);*/
 //            request.getRequestDispatcher("/PrepaAccueil").forward(request,response);
+            connection.close();
             response.sendRedirect(request.getContextPath()+"/PrepaAccueil");
 
 
-            connection.close();
         }catch (Exception e)
         {
             e.printStackTrace();

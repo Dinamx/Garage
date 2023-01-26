@@ -50,6 +50,7 @@
 </div>
 
 
+<%@include file="inc/script.jsp"%>
 
 </body>
 </html>

@@ -94,11 +94,12 @@ public class InsertionEmp extends HttpServlet {
 //        response.sendRedirect("employe.jsp");
                 /** close connexion*/
 
+            connection.close();
+            response.sendRedirect(request.getContextPath() + "/PrepaInsertEmp");
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            response.sendRedirect(request.getContextPath() + "/PrepaInsertEmp");
-        }
+            }
 
         else{
             out.println("champs vides");

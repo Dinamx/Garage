@@ -28,14 +28,15 @@
                 <h2 class="title">demande de devis</h2>
             </div>
             <div class="card-body">
-                <form method="POST" action="">
+                <form method="POST" action="${pageContext.request.contextPath}/Demandedevis">
 
 <%--                    CLIENT ID --%>
                     <div class="form-row">
                         <div class="name">numero client</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="number" name="descriptionPiece">
+<%--                                todo fonction de verification si le client existe  --%>
+                                <input class="input--style-5" type="number" name="ClientId">
                             </div>
                         </div>
                     </div>
@@ -77,5 +78,6 @@
         </div>
     </div>
 </div>
+<%@include file="inc/script.jsp"%>
 
 </body>

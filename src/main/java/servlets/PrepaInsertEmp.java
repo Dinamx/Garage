@@ -39,7 +39,7 @@ public class PrepaInsertEmp extends HttpServlet {
             request.setAttribute("specialites", specialites);
             request.setAttribute("listespecialite",spec);
             request.setAttribute("employedetail", employeDetails);
-
+            connection.close();
             request.getRequestDispatcher("employe.jsp").forward(request,response);
         } catch(Exception e)
 

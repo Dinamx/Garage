@@ -21,9 +21,9 @@ public class Prepabenefices extends HttpServlet {
             Vector<Benefices> benefices= DevisDAO.listebenefices(connection);
 
             request.setAttribute("benefice",benefices);
+            connection.close();
             request.getRequestDispatcher("benefices.jsp").forward(request,response);
 
-            connection.close();
         }
         catch (Exception e)
         {

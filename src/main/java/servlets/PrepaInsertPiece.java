@@ -28,6 +28,7 @@ public class PrepaInsertPiece extends HttpServlet {
             Vector <Modele>modele=PiecesDAO.listeModele(connection);
             request.setAttribute("unite", unite);
             request.setAttribute("modele", modele);
+            connection.close();
             request.getRequestDispatcher("insertionProduit.jsp").forward(request,response);
 
 

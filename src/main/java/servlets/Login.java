@@ -1,5 +1,6 @@
 package servlets;
 
+import exeptions.EmptyFieldException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -21,23 +22,35 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      Connection connection =new Connexion().getConnexion();
         PrintWriter out=response.getWriter();
-     try {
+
          String email=request.getParameter("email");
          String password=request.getParameter("password");
          String erreurs="";
          out.print("eto");
-         Admin admin=new Admin(email,password);
+        Admin admin = new Admin();
+         try {
+            admin.setEmail(email);
+            admin.setPassword(password);
+         }catch (EmptyFieldException empty)
+         {
+             erreurs+= empty.getMessage();
+             request.setAttribute("erreur",erreurs);
+             request.getRequestDispatcher("index.jsp").forward(request,response);
+         }
+        try {
          if(admin.find(connection)==null)
          {
              erreurs="mot de passe ou email incorrect ";
              request.setAttribute("erreur",erreurs);
              out.println("admin: "+ admin);
+             connection.close();
              request.getRequestDispatcher("index.jsp").forward(request,response);
          }
          else {
              request.getSession().setAttribute("admin", admin);
              out.println("yayyyy: " + admin);
 //             request.getRequestDispatcher("index.jsp").forward(request,response);
+             connection.close();
              response.sendRedirect(request.getContextPath()+"/PrepaAccueil");
                 out.println("oups");
          }
@@ -45,7 +58,6 @@ public class Login extends HttpServlet {
 
 
 
-         connection.close();
      }
      catch (Exception e)
      {

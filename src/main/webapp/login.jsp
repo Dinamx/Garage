@@ -11,7 +11,7 @@
 <%
     if(request.getAttribute("erreur")!=null)
     {
-        out.print("diso eee");
+        out.print(request.getAttribute("erreur"));
     }
     else{
         out.print("tsisy olana");
@@ -39,10 +39,10 @@
                 <div>
                     <form class="p-3 p-xl-4" method="post" action="${pageContext.request.contextPath}/Login">
                         <div class="mb-3">
-                            <input class="form-control" type="email" id="email-1" name="email" placeholder="Email" required>
+                            <input class="form-control" value="admin1@gmail.com" type="email" id="email-1" name="email" placeholder="Email" required>
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" type="password" name="password" placeholder="mot de passe" required>
+                            <input class="form-control" type="password" value="admin1" name="password" placeholder="mot de passe" required>
                         </div>
                         <div><button class="btn btn-dark shadow d-block w-100" type="submit" style="--bs-primary: #3763f4;--bs-primary-rgb: 55,99,244;--bs-body-bg: #fff;">Send </button></div>
                     </form>
@@ -51,6 +51,8 @@
         </div>
     </div>
 </section>
+<%@include file="inc/script.jsp"%>
+
 
 </body>
 </html>

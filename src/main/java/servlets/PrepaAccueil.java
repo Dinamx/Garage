@@ -32,6 +32,7 @@ public class PrepaAccueil extends HttpServlet {
             request.setAttribute("pieces",pieces);
             request.setAttribute("modele",modele);
             request.setAttribute("stock",stock);
+            connection.close();
             request.getRequestDispatcher("accueil.jsp").forward(request,response);
 
         }

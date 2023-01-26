@@ -21,6 +21,7 @@ public class PrepaDemandeDevis extends HttpServlet {
         try {
             Vector<TypeService> services = DevisDAO.listeServices(connection);
             request.setAttribute("services",services);
+            connection.close();
             request.getRequestDispatcher("demandeDevis.jsp").forward(request,response);
         }catch(Exception e)
         {

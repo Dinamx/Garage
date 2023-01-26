@@ -22,6 +22,8 @@
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaInsertPiece">Pieces</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaDemandeDevis">Services</a></li>
         <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">Benefice</a></li>
+        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">TodayStuff</a></li>
+
         <li><a class="nav-link scrollto" href="#">Depense</a></li>
         <li><a class="nav-link scrollto" href="#">Log out</a></li>
       </ul>

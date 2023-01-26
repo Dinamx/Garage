@@ -1,0 +1,14 @@
+.mycontainer {
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+}
+.header {
+    position: sticky;
+    top:0;
+}
+.table {
+    text-align: left;
+    position: relative;
+    border-collapse: collapse;
+}

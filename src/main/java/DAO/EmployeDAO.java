@@ -6,6 +6,7 @@ import model.NiveauEtude;
 import model.Specialite;
 import model.SpecialiteEmploye;
 import views.EmployeDetail;
+import views.Service;
 import views.SpecEmp;
 
 import java.sql.*;
@@ -71,6 +72,7 @@ public class EmployeDAO {
         }
         return emp;
     }
+//    liste des specialites employes en fonction de l'id de l'employe
     public static Vector<SpecEmp> listSpecialiteEmp(Connection connection,int id_emp) throws Exception {
         Object [] spec=new SpecEmp().findAll(connection,"idemploye="+id_emp);
         Vector<SpecEmp> gen=new Vector<>();
@@ -80,8 +82,9 @@ public class EmployeDAO {
         System.out.println(spec.length);
         return gen;
     }
-    public static Vector<SpecEmp> listSpecialiteEmp(Connection connection) throws Exception {
-        Object [] spec=new SpecEmp().findAll(connection,"");
+//    liste specialites employes avec conditions
+    public static Vector<SpecEmp> listSpecialiteEmp(Connection connection,String extraCondition) throws Exception {
+        Object [] spec=new SpecEmp().findAll(connection,"where "+extraCondition);
         Vector<SpecEmp> gen=new Vector<>();
         for (int i = 0; i < spec.length; i++) {
             gen.add((SpecEmp) spec[i]);
@@ -89,6 +92,16 @@ public class EmployeDAO {
         System.out.println(spec.length);
         return gen;
     }
+
+//    liste emp-spec e fonction des specialites
+    public static Vector<Vector<SpecEmp>> listSpecialiteEmp(Connection connection, Vector<Service> services) throws Exception {
+        Vector<Vector<SpecEmp>> employeParSpec=new Vector<>();
+        for (int i = 0; i < services.size(); i++) {
+            employeParSpec.add(listSpecialiteEmp(connection,services.get(i).getIdSpecialites()));
+        }
+        return employeParSpec;
+    }
+
     public static Vector<SpecEmp> listSpecialiteEmp(int id_emp) throws Exception {
         Connection connection=new Connexion().getConnexion();
         Vector<SpecEmp> gen=listSpecialiteEmp(connection,id_emp);

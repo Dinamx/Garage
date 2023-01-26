@@ -1,5 +1,6 @@
 package model;
 
+import exeptions.EmptyFieldException;
 import manipDb.ObjetBDD;
 
 public class Admin extends ObjetBDD {
@@ -10,7 +11,11 @@ public class Admin extends ObjetBDD {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws EmptyFieldException {
+        if(email.trim().equals(""))
+        {
+            throw new EmptyFieldException("email");
+        }
         this.email = email;
     }
 
@@ -18,7 +23,8 @@ public class Admin extends ObjetBDD {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws EmptyFieldException {
+        if(password.trim().equals("")) throw new EmptyFieldException("mot de passe");
         this.password = password;
     }
 
