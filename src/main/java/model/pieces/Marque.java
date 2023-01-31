@@ -1,6 +1,5 @@
-package model;
+package model.pieces;
 
-import database.core.DBObject;
 import manipDb.Connexion;
 import manipDb.ObjetBDD;
 

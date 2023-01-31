@@ -1,16 +1,13 @@
 package DAO;
 
 import manipDb.Connexion;
-import model.Genre;
-import model.NiveauEtude;
-import model.Specialite;
-import model.SpecialiteEmploye;
+import model.userBasic.NiveauEtude;
+import model.specialite.Specialite;
 import views.EmployeDetail;
 import views.Service;
 import views.SpecEmp;
 
 import java.sql.*;
-import java.util.List;
 import java.util.Vector;
 
 public class EmployeDAO {

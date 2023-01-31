@@ -7,9 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manipDb.Connexion;
-import model.Genre;
-import model.NiveauEtude;
-import model.Specialite;
+import model.userBasic.NiveauEtude;
+import model.specialite.Specialite;
 import views.EmployeDetail;
 import views.SpecEmp;
 

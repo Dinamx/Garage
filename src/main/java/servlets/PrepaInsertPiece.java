@@ -1,14 +1,12 @@
 package servlets;
 
 import DAO.PiecesDAO;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.Marque;
-import model.Modele;
-import model.Unite;
+import model.pieces.Modele;
+import model.pieces.Unite;
 
 import java.io.IOException;
 import java.sql.Connection;

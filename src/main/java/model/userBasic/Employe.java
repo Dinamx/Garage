@@ -1,4 +1,4 @@
-package model;
+package model.userBasic;
 
 import exeptions.AgeExceptions;
 
@@ -105,5 +105,6 @@ public class Employe extends ObjetBDD {
         }
         return true;
     }
+
 
 }

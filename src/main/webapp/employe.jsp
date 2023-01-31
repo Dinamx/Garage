@@ -1,10 +1,10 @@
 <%@ page import="java.util.Vector" %>
-<%@ page import="model.Genre" %>
-<%@ page import="model.NiveauEtude" %>
-<%@ page import="model.Specialite" %>
+<%@ page import="model.userBasic.Genre" %>
+<%@ page import="model.userBasic.NiveauEtude" %>
+<%@ page import="model.specialite.Specialite" %>
 <%@ page import="DAO.EmployeDAO" %>
 <%@ page import="views.EmployeDetail" %>
-<%@ page import="model.SpecialiteEmploye" %>
+<%@ page import="model.specialite.SpecialiteEmploye" %>
 <%@ page import="views.SpecEmp" %>
 <% String title="employes";%>
 <%@include file="inc/head.jsp"%>

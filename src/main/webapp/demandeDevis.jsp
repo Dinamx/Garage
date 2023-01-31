@@ -1,5 +1,5 @@
 <%@ page import="java.util.Vector" %>
-<%@ page import="model.TypeService" %>
+<%@ page import="model.service.TypeService" %>
 <%@ page import="DAO.DevisDAO" %><%--
   Created by IntelliJ IDEA.
   User: priscafehiarisoadama

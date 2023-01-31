@@ -5,8 +5,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.Piece;
-import model.AchatPiece;
+import model.pieces.Piece;
+import model.actions.AchatPiece;
 
 import java.io.IOException;
 import java.sql.Connection;

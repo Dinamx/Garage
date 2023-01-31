@@ -1,12 +1,8 @@
 package display;
 
 import manipDb.Connexion;
-import model.Employe;
-import database.core.Config;
-import database.core.DBConnection;
-import database.core.Database;
+import model.userBasic.Employe;
 
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-<%@ page import="model.Vehicule" %>
+<%@ page import="model.pieces.Vehicule" %>
 <%@ page import="java.util.Vector" %>
 <%@ page import="views.SpecEmp" %>
 <%@ page import="views.Service" %><%--

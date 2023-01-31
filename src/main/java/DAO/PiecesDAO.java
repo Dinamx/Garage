@@ -1,7 +1,11 @@
 package DAO;
 
 import manipDb.Connexion;
-import model.*;
+import model.actions.AchatPiece;
+import model.pieces.Marque;
+import model.pieces.Modele;
+import model.pieces.Piece;
+import model.pieces.Unite;
 import views.AchatVente;
 
 import java.sql.Connection;

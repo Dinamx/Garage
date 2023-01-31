@@ -1,4 +1,4 @@
-package model;
+package model.specialite;
 
 import manipDb.ObjetBDD;
 

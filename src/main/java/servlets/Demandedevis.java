@@ -7,8 +7,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.DemandeDevis;
-import model.Vehicule;
+import model.actions.DemandeDevis;
+import model.pieces.Vehicule;
 import views.Service;
 import views.SpecEmp;
 

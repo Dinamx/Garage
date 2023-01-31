@@ -1,18 +1,17 @@
-package model;
+package model.pieces;
 
 import DAO.PiecesDAO;
-import database.core.DBObject;
 import manipDb.Connexion;
 import manipDb.ObjetBDD;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class Piece extends ObjetBDD {
 
     String piece;
     int idUnite;
     int idModele;
+
 
 
 

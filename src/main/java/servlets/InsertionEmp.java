@@ -8,13 +8,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Employe;
-import database.core.Config;
-import database.core.DBConnection;
-import database.core.Database;
+import model.userBasic.Employe;
 import manipDb.Connexion;
-import model.Specialite;
-import model.SpecialiteEmploye;
+import model.specialite.Specialite;
+import model.specialite.SpecialiteEmploye;
 
 /*import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +22,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Vector;
 

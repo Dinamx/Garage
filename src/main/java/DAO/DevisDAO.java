@@ -1,6 +1,6 @@
 package DAO;
 
-import model.TypeService;
+import model.service.TypeService;
 import views.Benefices;
 
 import java.sql.Connection;

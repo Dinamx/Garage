@@ -5,7 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.Admin;
+import model.userBasic.Admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,7 +1,7 @@
-<%@ page import="model.Marque" %>
+<%@ page import="model.pieces.Marque" %>
 <%@ page import="java.util.Vector" %>
-<%@ page import="model.Unite" %>
-<%@ page import="model.Modele" %>
+<%@ page import="model.pieces.Unite" %>
+<%@ page import="model.pieces.Modele" %>
 <% String title="insertion de produits";%>
 <%@include file="inc/head.jsp"%>
 <body>

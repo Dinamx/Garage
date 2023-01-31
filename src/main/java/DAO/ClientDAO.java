@@ -1,8 +1,8 @@
 package DAO;
 
 import manipDb.Connexion;
-import model.Client;
-import model.Vehicule;
+import model.userBasic.Client;
+import model.pieces.Vehicule;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

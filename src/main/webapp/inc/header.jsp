@@ -22,7 +22,7 @@
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaInsertPiece">Pieces</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaDemandeDevis">Services</a></li>
         <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">Benefice</a></li>
-        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">TodayStuff</a></li>
+        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/TodayStuff">TodayStuff</a></li>
 
         <li><a class="nav-link scrollto" href="#">Depense</a></li>
         <li><a class="nav-link scrollto" href="#">Log out</a></li>
@@ -30,12 +30,12 @@
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
-    <div class="header-social-links d-flex align-items-center">
+   <%-- <div class="header-social-links d-flex align-items-center">
       <a href="twitter.com" class="twitter"><i class="bi bi-twitter"></i></a>
       <a href="facebook.com" class="facebook"><i class="bi bi-facebook"></i></a>
       <a href="instagram.com" class="instagram"><i class="bi bi-instagram"></i></a>
       <a href="linkedin.com" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
+    </div>--%>
 
   </div>
 </header>

@@ -5,7 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.TypeService;
+import model.service.TypeService;
 
 import java.io.IOException;
 import java.io.PrintWriter;

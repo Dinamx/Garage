@@ -1,7 +1,7 @@
 <%@ page import="java.util.Vector" %>
-<%@ page import="model.Piece" %>
-<%@ page import="model.Modele" %>
-<%@ page import="model.AchatPiece" %>
+<%@ page import="model.pieces.Piece" %>
+<%@ page import="model.pieces.Modele" %>
+<%@ page import="model.actions.AchatPiece" %>
 <%@ page import="views.AchatVente" %>
 <%@ page import="DAO.PiecesDAO" %>
 <% String title="Accueil";%>
@@ -99,7 +99,7 @@
                             <div class="name">Quantite</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="number" name="quantite">
+                                    <input class="input--style-5"  value="1" type="number" name="quantite">
                                 </div>
                             </div>
                         </div>

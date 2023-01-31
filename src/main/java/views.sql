@@ -110,3 +110,36 @@ create view service as select typeservice.id id, service, prix, margebeneficiair
 
 -- liste des employes ayant une specialites
 -- create view select * from specialiteemploye join employe e on specialiteemploye.idemploye = e.id where idspecialite=1
+
+
+-- view produit + marge + prixConseillé
+CREATE OR REPLACE FUNCTION getMargeBeneficiaire(valeur double precision)
+    RETURNS double precision
+AS
+$$
+BEGIN
+    return case when valeur > 0 and valeur <1000 THEN 50
+                when valeur > 1001 and valeur< 2000 THEN 20
+                when valeur > 1001 and valeur < 2000 THEN 10
+                when valeur > 2001 and valeur < 30000 THEN 10
+                else 0
+        end;
+end;
+$$ LANGUAGE PLPGSQL;
+
+select getMargeBeneficiaire(999);
+
+
+select * from achatpiece ;
+-- String nom;
+-- double prixAchat;
+-- double prixConseille;
+-- double benefice;
+-- double marge;
+
+
+create or replace view produit as
+select p.piece as nom , (montant/nombre) as prixachat ,((montant/nombre) + ((montant/nombre)* (getMargeBeneficiaire((montant/nombre))/100) )) as prixconseille, ((((montant/nombre) + ((montant/nombre)* (getMargeBeneficiaire((montant/nombre))/100) )))-((montant/nombre)))as benefice ,getMargeBeneficiaire((montant/nombre)) as marge   from achatpiece join piece p on p.id = achatpiece.idpiece;
+
+
+select p.piece as nom  , (montant/nombre) as prixachat ,((montant/nombre) + ((montant/nombre)* (getMargeBeneficiaire((montant/nombre))/100) )) as prixconseille, ((((montant/nombre) + ((montant/nombre)* (getMargeBeneficiaire((montant/nombre))/100) )))-((montant/nombre)))as benefice ,getMargeBeneficiaire((montant/nombre)) as marge   from achatpiece join piece p on p.id = achatpiece.idpiece;

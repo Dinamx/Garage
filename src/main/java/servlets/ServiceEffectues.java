@@ -1,13 +1,12 @@
 package servlets;
 
 import DAO.ClientDAO;
-import DAO.EmployeDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.ServiceEffectue;
-import model.ServiceEmploye;
+import model.service.ServiceEffectue;
+import model.service.ServiceEmploye;
 
 import java.io.IOException;
 import java.sql.Connection;
