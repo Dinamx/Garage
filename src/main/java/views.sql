@@ -155,3 +155,17 @@ create or replace view factureDetails as select id_facture, idclient,facture.dat
 left outer join payement_facture pf on facture.id = pf.id_facture
         join typeservice t on t.id = fs.id_service
               group by idclient, id_facture, facture.date_facture;
+
+
+create view DetailFacturePromus as select service,  prix prixUnitaire , nombre, coalesce(promotion,0) promotion , id_facture , (prix- (t.prix * coalesce(promotion,0))/100)*nombre prixtotal from facture_service join typeservice t on facture_service.id_service = t.id
+
+create or replace FUNCTION getRemise(prix double precision, idFacture int ) returns double precision language plpgsql as
+    $$
+    declare remise double precision;
+        promotions double precision;
+        price double precision;
+    BEGIN
+        select  (t.prix * coalesce(promotion,0))/100 into promotions from facture_service join typeservice t on facture_service.id_service = t.id
+    end;
+$$
+end;

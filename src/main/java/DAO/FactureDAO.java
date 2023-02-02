@@ -4,6 +4,7 @@ import exeptions.MontantInvalide;
 import exeptions.RestePayementException;
 import model.facture.Facture_service;
 import model.userBasic.Client;
+import views.DetailFacturePromus;
 import views.FactureDetails;
 
 import java.sql.Connection;
@@ -39,6 +40,25 @@ public class FactureDAO {
         else{
             return true;
         }
+    }
+
+    // liste des details factures avect promotion -> tokony afficher-na ao @
+    public static Vector<DetailFacturePromus> listeFactureEtPromotion(int idFacture, Connection connection) throws Exception {
+
+        Vector<DetailFacturePromus> detail=new Vector<>();
+        try{
+            Object[] liste = new DetailFacturePromus().findAll(connection, " id_facture=" + idFacture);
+
+            detail= new Vector<>();
+            for (int i = 0; i < liste.length; i++) {
+                detail.add((DetailFacturePromus) liste[i]);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return detail;
     }
 
 }

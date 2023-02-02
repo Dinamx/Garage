@@ -1,5 +1,5 @@
 <%--=============================COMMENTS THAT MAY BE USEFULL=================================
-Servlet miantso : DetailListeFacture
+Servlet miantso : ListeFacturePromotion
 servlet Antsoiny :
 
 ROLE : PAYER (link)-> REDIRECTION VERS LA PAGE payer.jsp(formulaire de payement )
@@ -8,6 +8,7 @@ ROLE : PAYER (link)-> REDIRECTION VERS LA PAGE payer.jsp(formulaire de payement 
 <%@ page import="java.util.Vector" %>
 <%@ page import="views.Benefices" %>
 <%@ page import="views.FactureDetails" %>
+<%@ page import="views.DetailFacturePromus" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String title ="benefices";%>
 <%@include file="inc/head.jsp"%>
@@ -18,9 +19,9 @@ ROLE : PAYER (link)-> REDIRECTION VERS LA PAGE payer.jsp(formulaire de payement 
 <%@include file="inc/header.jsp"%>
 <%--==============================CONTENT============================================ --%>
 <%--datas--%>
-<% Vector<FactureDetails> factureDetail=new Vector<>();
-    if(request.getAttribute("FactureDetail")!=null)
-        factureDetail=(Vector<FactureDetails>) request.getAttribute("FactureDetail");%>
+<% Vector<DetailFacturePromus> factureDetail=new Vector<>();
+    if(request.getAttribute("FacturePromotion")!=null)
+        factureDetail=(Vector<DetailFacturePromus>) request.getAttribute("FacturePromotion");%>
 <%--end datas--%>
 
 <!-- table liste -->
@@ -33,13 +34,12 @@ ROLE : PAYER (link)-> REDIRECTION VERS LA PAGE payer.jsp(formulaire de payement 
             <tr class="tete">
 
                 <th>Id facture</th>
-                <th>Client</th>
-                <th>Date</th>
-                <th>Montant Total</th>
-                <th>montant paye </th>
-                <th>reste A payer</th>
-                <th>payement </th>
-                <th>detail facture </th>
+                <th>service</th>
+                <th>prix Unitaire</th>
+                <th>nombre</th>
+                <th>promotion </th>
+                <th>prix Total</th>
+
             </tr>
             </thead>
             <tbody>
@@ -47,13 +47,12 @@ ROLE : PAYER (link)-> REDIRECTION VERS LA PAGE payer.jsp(formulaire de payement 
             <tr class="anatiny">
 
                 <td><%=factureDetail.get(i).getId_facture()%></td>
-                <td><%=factureDetail.get(i).getIdclient()%></td>
-                <td><%=factureDetail.get(i).getDateFacture()%></td>
-                <td><%=factureDetail.get(i).getTotal()%></td>
-                <td><%=factureDetail.get(i).getPayee()%></td>
-                <td><%=factureDetail.get(i).getReste()%></td>
-                <td><a href="payer.jsp?idFacture=<%=factureDetail.get(i).getId_facture()%>&idClient=<%=factureDetail.get(i).getIdclient()%>&reste=<%=factureDetail.get(i).getReste()%>&date=<%=factureDetail.get(i).getDateFacture()%>">payer</a></td>
-                <td><a href="${pageContext.request.contextPath}/ListeFacturePromotion?idFacture=<%=factureDetail.get(i).getId_facture()%>">details</a></td>
+                <td><%=factureDetail.get(i).getService()%></td>
+                <td><%=factureDetail.get(i).getPrixUnitaire()%></td>
+                <td><%=factureDetail.get(i).getNombre()%></td>
+                <td><%=factureDetail.get(i).getPromotion()%></td>
+                <td><%=factureDetail.get(i).getPrixTotal()%></td>
+
 
             </tr>
             <%}%>

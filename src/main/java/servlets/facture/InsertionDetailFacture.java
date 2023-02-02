@@ -34,6 +34,7 @@ public class InsertionDetailFacture extends HttpServlet {
             double remise= Double.parseDouble(request.getParameter("remise").trim());
 
             Facture_service facture=new Facture_service(idFacture, idService,nombre);
+            facture.setPromotion(remise);
             facture.insert(connection);
             Vector<TypeService> listeservice= ServiceDAO.listeTypeService(connection);
             request.setAttribute("idFacture",idFacture);

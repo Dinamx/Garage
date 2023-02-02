@@ -410,8 +410,8 @@ public class ManipClass {
                 setter.invoke(instance, (Float) value);
             } else if (value instanceof Date) {
                 setter.invoke(instance, (Date) value);
-            } else if (value instanceof java.util.Date) {
-                setter.invoke(instance, (java.util.Date) value);
+            } else if (value instanceof java.sql.Date) {
+                setter.invoke(instance, (java.sql.Date) value);
             } else if (value instanceof Calendar) {
                 setter.invoke(instance, (Calendar) value);
             } else if (value instanceof String) {
