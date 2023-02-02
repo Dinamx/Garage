@@ -38,6 +38,18 @@ public class ClientDAO {
         }
         return id;
     }
+    public static int getIdClient(Connection connection)
+    {
+       return 0;
+    }
+    public static Vector<Client> listeClient(Connection connection) throws Exception {
+        Object[] client=new Client().findAll(connection,"");
+        Vector<Client> clients=new Vector<>();
+        for (int i = 0; i < client.length; i++) {
+            clients.add((Client) client[i]);
+        }
+        return clients;
+    }
 
 
     public static void main(String[] args) throws Exception {

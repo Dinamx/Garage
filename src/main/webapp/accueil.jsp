@@ -1,3 +1,11 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+servlet miantso : PrepaAccueil
+servlet antsoiny : AchatProduit
+role : affiche la liste de toutes les pieces + achat de pieces venant des fournisseurs
+redirection : affichage des produits achetes + suggestion de prix de vente
+
+=============================END COMMENT=================================--%>
 <%@ page import="java.util.Vector" %>
 <%@ page import="model.pieces.Piece" %>
 <%@ page import="model.pieces.Modele" %>

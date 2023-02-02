@@ -3,6 +3,7 @@ package model.userBasic;
 import manipDb.ObjetBDD;
 
 public class Client extends ObjetBDD {
+    int id;
     String nom;
     String prenom;
     String numero;
@@ -14,6 +15,14 @@ public class Client extends ObjetBDD {
     }
 
     public Client() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {

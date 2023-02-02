@@ -1,3 +1,9 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+servlet miantso : PrepaInsertPiece
+servlet antsoiny : /InsertionProduit
+
+=============================END COMMENT=================================--%>
 <%@ page import="model.pieces.Marque" %>
 <%@ page import="java.util.Vector" %>
 <%@ page import="model.pieces.Unite" %>

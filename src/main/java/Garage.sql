@@ -211,6 +211,24 @@ create table service_besionemp(idspecialites int references specialite(id),
         idtypeservices int references typeservice(id),
         nombre int );
 
+-- aleats 31-jan2023
+create table facture (
+    id serial primary key ,
+    idClient int references client(id),
+    Date_facture date,
+    libelle varchar(300) default 'facture');
+
+create table facture_service(
+    idfacture int references facture(id),
+    id_service int references typeservice(id)
+    );
+
+create table payement_facture(id serial primary key,
+ id_fatcure int references facture(id),
+ datePayement timestamp default now(),
+ montant double precision)
+
+
 
 
 

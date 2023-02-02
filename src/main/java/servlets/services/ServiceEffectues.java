@@ -1,4 +1,4 @@
-package servlets;
+package servlets.services;
 
 import DAO.ClientDAO;
 import jakarta.servlet.*;

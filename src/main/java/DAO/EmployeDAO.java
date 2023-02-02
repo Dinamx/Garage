@@ -1,6 +1,7 @@
 package DAO;
 
 import manipDb.Connexion;
+import model.service.TypeService;
 import model.userBasic.NiveauEtude;
 import model.specialite.Specialite;
 import views.EmployeDetail;
@@ -11,16 +12,6 @@ import java.sql.*;
 import java.util.Vector;
 
 public class EmployeDAO {
- /*   public static Vector<Genre> listeGenre(Connection connection, String extraCondition) throws Exception {
-        Genre g=new Genre();
-        Object [] genre=g.findAll(connection,extraCondition);
-        Vector<Genre> gen=new Vector<>();
-        for (int i = 0; i < genre.length; i++) {
-            gen.add((Genre) genre[i]);
-        }
-        return gen;
-    }*/
-
     /** LISTES */
     public static Vector<NiveauEtude> listeNiveauEtude(Connection connection,String extracondition) throws Exception {
         Object [] nivEtude=new NiveauEtude().findAll(connection,extracondition);
@@ -37,15 +28,6 @@ public class EmployeDAO {
             gen.add((Specialite) spec[i]);
         }
         System.out.println(spec.length);
-        return gen;
-    }
-
-    public static Vector<EmployeDetail> listeEmployeDetail(Connection connection, String extracondition) throws Exception {
-        Object [] list=new EmployeDetail().getFromView(connection,"employedetail",extracondition);
-        Vector<EmployeDetail> gen=new Vector<>();
-        for (int i = 0; i < list.length; i++) {
-            gen.add((EmployeDetail) list[i]);
-        }
         return gen;
     }
 
@@ -90,11 +72,22 @@ public class EmployeDAO {
         return gen;
     }
 
+//    liste des employes selon une specialites
+    public static Vector<SpecEmp> getAllEmployes(Connection connection,int idSpecialites) throws Exception {
+        Object [] spec=new SpecEmp().findAll(connection,"idspecialite="+idSpecialites);
+        Vector<SpecEmp> gen=new Vector<>();
+        for (int i = 0; i < spec.length; i++) {
+            gen.add((SpecEmp) spec[i]);
+        }
+        System.out.println(spec.length);
+        return gen;
+    }
+
 //    liste emp-spec e fonction des specialites
     public static Vector<Vector<SpecEmp>> listSpecialiteEmp(Connection connection, Vector<Service> services) throws Exception {
         Vector<Vector<SpecEmp>> employeParSpec=new Vector<>();
         for (int i = 0; i < services.size(); i++) {
-            employeParSpec.add(listSpecialiteEmp(connection,services.get(i).getIdSpecialites()));
+            employeParSpec.add(getAllEmployes(connection,services.get(i).getIdSpecialites()));
         }
         return employeParSpec;
     }
@@ -109,6 +102,7 @@ public class EmployeDAO {
     public static Vector<Vector<SpecEmp>> specialitesEmplist(Connection connection,Vector<EmployeDetail> empdetails) throws Exception {
         Vector<Vector<SpecEmp>> spec=new Vector<>();
         for (int i = 0; i < empdetails.size(); i++) {
+//
             spec.add(listSpecialiteEmp(connection,empdetails.get(i).getId_employe()));
         }
         return spec;
@@ -175,10 +169,14 @@ public class EmployeDAO {
 
             Vector<EmployeDetail> e=listeEmployeDetail2(connection);
             Vector<Vector<SpecEmp>> se=specialitesEmplist(connection,e);
+            Vector<TypeService> listeService=ServiceDAO.listeTypeService(connection);
+            Vector<Service> services=ServiceDAO.listeservice(connection,2);
+            Vector<Vector<SpecEmp>> specialitesEmp= EmployeDAO.listSpecialiteEmp(connection, services);
 
-        for (int i = 0; i < se.size(); i++) {
-            for (int j = 0; j < se.get(i).size(); j++) {
-                System.out.println(se.get(i).get(j).getIdemploye()+"\t"+se.get(i).get(j).getSpecialite());
+        for (int i = 0; i < specialitesEmp.size(); i++) {
+            System.out.println("specialite : "+services.get(i).getSpecialite());
+            for (int j = 0; j < specialitesEmp.get(i).size(); j++) {
+                System.out.println(specialitesEmp.get(i).get(j).getNom());
             }
         }
         System.out.println(e.size());

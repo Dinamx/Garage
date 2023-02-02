@@ -143,3 +143,15 @@ select p.piece as nom , (montant/nombre) as prixachat ,((montant/nombre) + ((mon
 
 
 select p.piece as nom  , (montant/nombre) as prixachat ,((montant/nombre) + ((montant/nombre)* (getMargeBeneficiaire((montant/nombre))/100) )) as prixconseille, ((((montant/nombre) + ((montant/nombre)* (getMargeBeneficiaire((montant/nombre))/100) )))-((montant/nombre)))as benefice ,getMargeBeneficiaire((montant/nombre)) as marge   from achatpiece join piece p on p.id = achatpiece.idpiece;
+
+-- view facture details
+select id_facture, idclient, facture.date_facture,coalesce(sum(prix*nombre),0) total , coalesce(sum(montant),0) payee,coalesce((sum(prix*nombre)-sum(coalesce(montant,0))),0) reste from facture  join facture_service fs on facture.id = fs.id_facture
+ left outer join payement_facture pf on facture.id = pf.id_facture
+join typeservice t on t.id = fs.id_service
+group by idclient, id_facture, facture.date_facture;
+
+
+create or replace view factureDetails as select id_facture, idclient,facture.date_facture dateFacture, coalesce(sum(prix*nombre),0) total , coalesce(sum(montant),0) payee,coalesce((sum(prix*nombre)-sum(coalesce(montant,0))),0) reste from facture  join facture_service fs on facture.id = fs.id_facture
+left outer join payement_facture pf on facture.id = pf.id_facture
+        join typeservice t on t.id = fs.id_service
+              group by idclient, id_facture, facture.date_facture;

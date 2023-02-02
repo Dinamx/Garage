@@ -1,4 +1,4 @@
-package servlets;
+package servlets.devis;
 
 import DAO.ClientDAO;
 import DAO.EmployeDAO;

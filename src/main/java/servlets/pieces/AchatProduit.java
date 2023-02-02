@@ -1,4 +1,4 @@
-package servlets;
+package servlets.pieces;
 
 import Alea.Produit;
 import DAO.ServiceDAO;

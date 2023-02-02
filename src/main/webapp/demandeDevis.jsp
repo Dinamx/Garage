@@ -1,12 +1,14 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+servlet miantso : /PrepaDemandeDevis
+servlet Antsoiny : /Demandedevis
+role : formulaire de demande de devis
+redirection : serviceEffectues.jsp
+
+=============================END COMMENT=================================--%>
 <%@ page import="java.util.Vector" %>
 <%@ page import="model.service.TypeService" %>
-<%@ page import="DAO.DevisDAO" %><%--
-  Created by IntelliJ IDEA.
-  User: priscafehiarisoadama
-  Date: 18/01/2023
-  Time: 18:51
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="DAO.DevisDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String title="demande de devis "; %>
 

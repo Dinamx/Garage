@@ -1,4 +1,8 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
 
+calling servlet : /DetailListeFacture
+
+=============================END COMMENT=================================--%>
 <%@ page import="java.util.Vector" %>
 <%@ page import="Alea.Produit" %>
 <% String title="Accueil";%>

@@ -1,13 +1,14 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+calling servlet : /Demandedevis
+servlet antsoina : /ServiceEffectues
+role : formulaire d'insertion des employes qui on effectues un service
+
+=============================END COMMENT=================================--%>
 <%@ page import="model.pieces.Vehicule" %>
 <%@ page import="java.util.Vector" %>
 <%@ page import="views.SpecEmp" %>
-<%@ page import="views.Service" %><%--
-  Created by IntelliJ IDEA.
-  User: priscafehiarisoadama
-  Date: 26/01/2023
-  Time: 09:53
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="views.Service" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String title="services";%>
 <%@include file="inc/head.jsp"%>
@@ -89,7 +90,7 @@
                                 <div class="rs-select2 js-select-simple select--no-search">
                                     <select name="service<%=i%>">
                                         <%
-                                            for (int j = 0; j < listeEmployes.size(); j++) {
+                                            for (int j = 0; j < listeEmployes.get(i).size(); j++) {
 
                                         %>
                                         <option value="<%=listeEmployes.get(i).get(j).getIdemploye()%>"><%=listeEmployes.get(i).get(j).getNom()%></option>

@@ -1,11 +1,11 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+servlet miantso : /PrepaBenefices
+servlet antsoiny : null
+role : page misy ny benefices rehetra azon'le entreprise -> total vola azo + marge beneficiaire + benefices obtenues
+
+=============================END COMMENT=================================--%>
 <%@ page import="java.util.Vector" %>
-<%@ page import="views.Benefices" %><%--
-  Created by IntelliJ IDEA.
-  User: priscafehiarisoadama
-  Date: 19/01/2023
-  Time: 15:51
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="views.Benefices" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String title ="benefices";%>
 <%@include file="inc/head.jsp"%>
@@ -14,10 +14,9 @@
 <body>
 <%--===header===--%>
 <%@include file="inc/header.jsp"%>
-<%--=====content --%>
-<%--datas--%>
+<%--=========================CONTENT===================================== --%>
+
 <% Vector< Benefices> benefice=(Vector<Benefices>) request.getAttribute("benefice");%>
-<%--end datas--%>
 
 <!-- table liste -->
 

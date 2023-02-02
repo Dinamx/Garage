@@ -1,3 +1,8 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+calling servlet : /DetailListeFacture
+
+=============================END COMMENT=================================--%>
 <%--
   Created by IntelliJ IDEA.
   User: priscafehiarisoadama

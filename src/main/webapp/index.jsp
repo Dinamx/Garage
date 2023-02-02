@@ -1,3 +1,10 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+role : redirige vers la page de login si pas encore connecte
+        redirige vers la page d'accueil sinon
+
+=============================END COMMENT=================================--%>
+
 <%--
   Created by IntelliJ IDEA.
   User: priscafehiarisoadama

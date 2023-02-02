@@ -1,4 +1,4 @@
-package servlets;
+package servlets.connection;
 
 import exeptions.EmptyFieldException;
 import jakarta.servlet.*;

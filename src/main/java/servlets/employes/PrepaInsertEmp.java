@@ -1,4 +1,4 @@
-package servlets;
+package servlets.employes;
 
 import DAO.EmployeDAO;
 import jakarta.servlet.ServletException;

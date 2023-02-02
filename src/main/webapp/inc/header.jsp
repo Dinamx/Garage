@@ -11,8 +11,6 @@
 
     <div class="logo me-auto">
       <h1><a href="#">GARAGE</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
     </div>
 
     <nav id="navbar" class="navbar order-last order-lg-0">
@@ -22,12 +20,21 @@
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaInsertPiece">Pieces</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaDemandeDevis">Services</a></li>
         <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">Benefice</a></li>
-        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/TodayStuff">TodayStuff</a></li>
+        <li><a class="nav-link scrollto dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"  aria-expanded="false">Factures</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/PrepaInsertionFacture">Nouvelle facture         .</a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/DetailListeFacture">Liste Factures         .</a>
+                  <a class="dropdown-item" href="#"></a>
 
-        <li><a class="nav-link scrollto" href="#">Depense</a></li>
-        <li><a class="nav-link scrollto" href="#">Log out</a></li>
+          </div>
+        </li>
+<%--        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/TodayStuff">TodayStuff</a></li>--%>
+
+<%--        <li><a class="nav-link scrollto" href="#">Depense</a></li>--%>
+        <li title="log out"><a class="nav-link scrollto" href="#" ><i class="fa fa-sign-out"  size="100"></i></a></li>
       </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
+      <i class="bi bi-list mobile-nav-toggle">
+      </i>
     </nav><!-- .navbar -->
 
    <%-- <div class="header-social-links d-flex align-items-center">

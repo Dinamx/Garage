@@ -1,37 +1,29 @@
-package servlets;
+package servlets.devis;
 
-import DAO.PiecesDAO;
+import DAO.DevisDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.pieces.Modele;
-import model.pieces.Unite;
+import model.service.TypeService;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.Vector;
 
-@WebServlet(name = "PrepaInsertPiece", value = "/PrepaInsertPiece")
-public class PrepaInsertPiece extends HttpServlet {
+@WebServlet(name = "PrepaDemandeDevis", value = "/PrepaDemandeDevis")
+public class PrepaDemandeDevis extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*unites
-        * marque
-        * */
         Connection connection=new Connexion().getConnexion();
-//        ----------
+        PrintWriter out=response.getWriter();
         try {
-            Vector<Unite> unite = PiecesDAO.listeUnite(connection);
-            Vector <Modele>modele=PiecesDAO.listeModele(connection);
-            request.setAttribute("unite", unite);
-            request.setAttribute("modele", modele);
+            Vector<TypeService> services = DevisDAO.listeServices(connection);
+            request.setAttribute("services",services);
             connection.close();
-            request.getRequestDispatcher("insertionProduit.jsp").forward(request,response);
-
-
-        }
-        catch (Exception e)
+            request.getRequestDispatcher("demandeDevis.jsp").forward(request,response);
+        }catch(Exception e)
         {
             e.printStackTrace();
         }

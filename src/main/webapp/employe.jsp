@@ -1,3 +1,10 @@
+<%--=============================COMMENTS THAT MAY BE USEFULL=================================
+
+servlet miantso : /PrepaInsertEmp
+servlet antsoiny : InsertionEmp
+role de la page : liste tous les employes + formulaire d'insertion employes
+
+=============================END COMMENT=================================--%>
 <%@ page import="java.util.Vector" %>
 <%@ page import="model.userBasic.Genre" %>
 <%@ page import="model.userBasic.NiveauEtude" %>
