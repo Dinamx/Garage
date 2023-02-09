@@ -28,9 +28,17 @@ public class InsertionDetailFacture extends HttpServlet {
         {
             int idFacture= Integer.parseInt(request.getParameter("idFacture"));
             out.println("id facture "+idFacture);
+            out.println("id service  "+request.getParameter("service"));
             out.println(idFacture);
             int idService= Integer.parseInt(request.getParameter("service").trim());
             int nombre= Integer.parseInt(request.getParameter("nombre").trim());
+            boolean isBirthday= true;
+            System.out.println(request.getParameter("isbirthday"));
+                    if (request.getParameter("isbirthday").equalsIgnoreCase("true")) {
+                        isBirthday = true;
+                    }
+                    else
+                        isBirthday = false;
             double remise= Double.parseDouble(request.getParameter("remise").trim());
 
             Facture_service facture=new Facture_service(idFacture, idService,nombre);
@@ -39,12 +47,14 @@ public class InsertionDetailFacture extends HttpServlet {
             Vector<TypeService> listeservice= ServiceDAO.listeTypeService(connection);
             request.setAttribute("idFacture",idFacture);
             request.setAttribute("listeservice",listeservice);
+            request.setAttribute("isBirthday",isBirthday);
             connection.close();
             out.println("lol");
             request.getRequestDispatcher("ListeServiceFacture.jsp").forward(request,response);
         }
         catch (Exception e)
         {
+            out.println(e);
             e.printStackTrace();
         }
     }

@@ -12,6 +12,8 @@ public class FactureDetails extends ObjetBDD {
     double reste=0;
     Date dateFacture;
 
+
+
     public Date getDateFacture() {
         return dateFacture;
     }
@@ -61,7 +63,7 @@ public class FactureDetails extends ObjetBDD {
     }
 
 
-    public FactureDetails(int id_facture, int id_client, double total, double payee, double reste, double payement, Date dateFacture) {
+    public FactureDetails(int id_facture, int id_client, double total, double payee, double reste, Date dateFacture) {
         this.id_facture = id_facture;
         this.idclient = id_client;
         this.total = total;

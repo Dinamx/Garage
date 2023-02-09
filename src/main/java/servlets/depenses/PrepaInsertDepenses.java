@@ -1,28 +1,28 @@
-package servlets.facture;
+package servlets.depenses;
 
-import DAO.ClientDAO;
+import DAO.DepensesDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import manipDb.Connexion;
-import model.userBasic.Client;
+import model.depenses.TypeDepense;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.Vector;
 
-@WebServlet(name = "PrepaInsertionFacture", value = "/PrepaInsertionFacture")
-public class PrepaInsertionFacture extends HttpServlet {
+@WebServlet(name = "PrepaInsertDepenses", value = "/PrepaInsertDepenses")
+public class PrepaInsertDepenses extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection=new Connexion().getConnexion();
+        PrintWriter out=response.getWriter();
         try {
-            Vector<Client> client= ClientDAO.listAllClient(connection,"");
-            request.setAttribute("client",client);
-
+            Vector<TypeDepense> typedepenses = DepensesDAO.getListDepense(connection);
+            request.setAttribute("typedepenses",typedepenses);
             connection.close();
-            request.getRequestDispatcher("insertionFacture.jsp").forward(request,response);
-
+            request.getRequestDispatcher("insertionDepenses.jsp").forward(request,response);
         }catch (Exception e)
         {
             e.printStackTrace();

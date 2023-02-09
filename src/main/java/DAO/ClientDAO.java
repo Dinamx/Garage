@@ -3,11 +3,9 @@ package DAO;
 import manipDb.Connexion;
 import model.userBasic.Client;
 import model.pieces.Vehicule;
+import views.EmployeDetail;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Vector;
 
 public class ClientDAO {
@@ -50,6 +48,27 @@ public class ClientDAO {
         }
         return clients;
     }
+
+    public  static Vector<Client> listAllClient(Connection connection, String condition ) throws SQLException {
+        String querry="select * from client "+condition;
+        PreparedStatement preparedStatement= connection.prepareStatement(querry);
+        ResultSet res= preparedStatement.executeQuery();
+        Vector<Client> clients=new Vector<>();
+        while (res.next())
+        {
+            int id=res.getInt(res.findColumn("id"));
+            String nom=res.getString(res.findColumn("nom"));;
+            String prenom=res.getString(res.findColumn("prenom"));;
+            String numero=res.getString(res.findColumn("numero")); ;
+            Date dateNaissance=res.getDate(res.findColumn("dateDeNaissance"));
+            clients.add(new Client(id, nom,prenom, numero, dateNaissance));
+        }
+        return clients;
+    }
+
+
+
+
 
 
     public static void main(String[] args) throws Exception {

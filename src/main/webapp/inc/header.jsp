@@ -20,6 +20,7 @@
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaInsertPiece">Pieces</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/PrepaDemandeDevis">Services</a></li>
         <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/Prepabenefices">Benefice</a></li>
+        <li><a class="nav-link scrollto " href="${pageContext.request.contextPath}/PrepaInsertDepenses">Depenses</a></li>
         <li><a class="nav-link scrollto dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"  aria-expanded="false">Factures</a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/PrepaInsertionFacture">Nouvelle facture         .</a>

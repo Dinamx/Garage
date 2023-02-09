@@ -169,3 +169,15 @@ create or replace FUNCTION getRemise(prix double precision, idFacture int ) retu
     end;
 $$
 end;
+
+
+create view detailDepense as select extract(MONTH from datedepense) as month,
+                                    sum(depense.montant) as totaldepense, extract(year from datedepense) as year
+                             from depense group by month,year, datedepense;
+create view detailRecette as select extract(month from datefacture) as month,
+                                    sum(payee) as recette, extract(year from datefacture) as year from facturedetails
+                             group by  month, year;
+
+create view detailBudjet as select totaldepense , recette, recette-detailDepense.totaldepense caisse , d.month, d.year from detailDepense
+                                                                                                                                full join detailrecette d on detailDepense.month = d.month
+    and detailDepense.year = d.year;

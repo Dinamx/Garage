@@ -44,7 +44,7 @@ role : formulaire de creation d'une nouvelle facture
                                             for (int i = 0; i < client.size(); i++) {
 
                                         %>
-                                        <option value="<%=client.get(i).getId()%>"><%=client.get(i).getNom()%></option>
+                                        <option value="<%=client.get(i).getId()%>"><%=client.get(i).getNom()%> , anniveraire ; <%=client.get(i).getDateDeNaissance()%></option>
                                         <%}%>
                                     </select>
                                     <div class="select-dropdown"></div>

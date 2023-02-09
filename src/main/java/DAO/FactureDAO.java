@@ -5,9 +5,10 @@ import exeptions.RestePayementException;
 import model.facture.Facture_service;
 import model.userBasic.Client;
 import views.DetailFacturePromus;
+import views.EmployeDetail;
 import views.FactureDetails;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.util.Vector;
 
 public class FactureDAO {
@@ -60,5 +61,51 @@ public class FactureDAO {
         }
         return detail;
     }
+
+    public static Vector<FactureDetails> ListeDetailFactureA(Connection connection) throws SQLException {
+        String querry="select * from facturedetails ";
+        PreparedStatement preparedStatement= connection.prepareStatement(querry);
+        ResultSet res= preparedStatement.executeQuery();
+        Vector<FactureDetails> emp=new Vector<>();
+        while (res.next())
+
+            {
+           Date date= Date.valueOf((res.getString(res.findColumn("datefacture"))));;
+            int id_facture= Integer.parseInt(res.getString(res.findColumn("id_facture")));;
+            int idclient= Integer.parseInt(res.getString(res.findColumn("idclient")));;
+            double prixTotal= Double.parseDouble(res.getString(res.findColumn("total")));;
+            double payee= Double.parseDouble(res.getString(res.findColumn("payee")));;
+            double reste= Double.parseDouble(res.getString(res.findColumn("reste")));;
+            emp.add(new FactureDetails(id_facture,idclient,prixTotal,payee,reste,date));
+        }
+        return emp;
+    }
+
+
+    public static boolean factureAnnuelle(Connection connection , int idClient) throws SQLException {
+        String querry = "select * from facturedetails where to_char(datefacture,'yyyy')='2023' and idclient=" + idClient;
+        PreparedStatement preparedStatement = connection.prepareStatement(querry);
+        ResultSet res = preparedStatement.executeQuery();
+        System.out.println("check commande annee");
+
+        Vector<FactureDetails> emp=new Vector<>();
+        while (res.next())
+
+        {
+            Date date= Date.valueOf((res.getString(res.findColumn("datefacture"))));;
+            int id_facture= Integer.parseInt(res.getString(res.findColumn("id_facture")));;
+            int idclient= Integer.parseInt(res.getString(res.findColumn("idclient")));;
+            double prixTotal= Double.parseDouble(res.getString(res.findColumn("total")));;
+            double payee= Double.parseDouble(res.getString(res.findColumn("payee")));;
+            double reste= Double.parseDouble(res.getString(res.findColumn("reste")));;
+            emp.add(new FactureDetails(id_facture,idclient,prixTotal,reste,payee,date));
+        }
+    if(emp.size()==0)
+    {
+        return true;
+    }
+    else return false;
+    }
+
 
 }
