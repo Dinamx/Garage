@@ -10,6 +10,7 @@ ROLE : PAYER (link)-> REDIRECTION VERS LA PAGE payer.jsp(formulaire de payement 
 <%@ page import="views.FactureDetails" %>
 <%@ page import="views.DetailFacturePromus" %>
 <%@ page import="views.DetailBudjet" %>
+<%@ page import="model.Report" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String title ="benefices";%>
 <%@include file="inc/head.jsp"%>
@@ -34,6 +35,9 @@ double TotalRecette=0;
     double Caisse=0;
     if(request.getAttribute("Caisse")!=null)
         Caisse= (double) request.getAttribute("Caisse");
+    Report rep = new Report();
+    if(request.getAttribute("report")!=null)
+        rep= (Report) request.getAttribute("report");
 
 
 
@@ -62,7 +66,7 @@ double TotalRecette=0;
             </tr>
             </thead>
             <tbody>
-            <% for (int i = 0; i < detailbudjet.size(); i++) {%>
+<%--            <% for (int i = 0; i < detailbudjet.size(); i++) {%>
             <tr class="anatiny">
 
                 <td></td>
@@ -75,7 +79,8 @@ double TotalRecette=0;
 
 
             </tr>
-            <%}%>
+            <%}%>--%>
+
             <tr class="anatiny">
 
                 <td>TOTAL</td>
@@ -90,6 +95,9 @@ double TotalRecette=0;
             </tr>
             </tbody>
         </table>
+
+        <p>date report : <%=rep.getDateReport()%> </p>
+        <p>montant  : <%=rep.getMontantReport()%></p>
     </div>
 </div>
 

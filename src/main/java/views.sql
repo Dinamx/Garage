@@ -181,3 +181,42 @@ create view detailRecette as select extract(month from datefacture) as month,
 create view detailBudjet as select totaldepense , recette, recette-detailDepense.totaldepense caisse , d.month, d.year from detailDepense
                                                                                                                                 full join detailrecette d on detailDepense.month = d.month
     and detailDepense.year = d.year;
+
+-- aleats
+select sum(montant) from depense where datedepense between '2023-02-08' and now();
+select sum(payee) from facturedetail2 where date_facture between '2023-02-08' and now();
+
+
+-- last added
+select pf.id_facture, idclient,facture.date_facture dateFacture, coalesce(sum(prix*nombre),0) total ,
+       coalesce(sum(montant),0) payee,coalesce((sum(prix*nombre)-sum(coalesce(montant,0))),0) reste
+from facture
+         join facture_service fs on facture.id = fs.id_facture
+         left outer join payement_facture pf on facture.id = pf.id_facture                                                                                                                                                                                                   join typeservice t on t.id = fs.id_service
+group by idclient, pf.id_facture, facture.date_facture;
+
+
+select pf.id_facture, idclient,facture.date_facture dateFacture,id_service,typeservice.prix, coalesce(sum(typeservice.prix*nombre),0) total ,
+       coalesce(sum(montant),0) payee,coalesce((sum(typeservice.prix*nombre)-sum(coalesce(montant,0))),0) reste
+from facture join facture_service fs on facture.id = fs.id_facture
+             join typeservice  on fs.id_service = typeservice.id
+             left outer join payement_facture pf on facture.id = pf.id_facture                                                                                                                                                                                                   join typeservice t on t.id = fs.id_service
+group by idclient, pf.id_facture, facture.date_facture, id_service, typeservice.prix;
+
+select id_facture, idclient,facture.date_facture,sum(nombre*typeservice.prix) total from facture join facture_service on facture.id = facture_service.id_facture
+                                                                                                 join typeservice on facture_service.id_service = typeservice.id
+group by id_facture, facture.date_facture, idclient;
+
+select id_facture, sum(montant)from payement_facture
+group by id_facture;
+
+create view facturedetail2 as select fact.id_facture as id_facture, idclient,date_facture, total, payee , total-payee reste from (select id_facture, idclient,facture.date_facture,sum(nombre*typeservice.prix) total from facture join facture_service on facture.id = facture_service.id_facture
+                                                                                                                                                                                                                                   join typeservice on facture_service.id_service = typeservice.id
+                                                                                                                                  group by id_facture, facture.date_facture, idclient) as fact
+                                                                                                                                     join (select id_facture, sum(montant) payee from payement_facture group by id_facture) as paye on fact.id_facture=paye.id_facture
+
+select * from facture_service join typeservice on facture_service.id_service = typeservice.id where id_facture=51;
+
+
+
+--

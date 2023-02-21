@@ -23,7 +23,7 @@ public class DetailListeFacture extends HttpServlet {
         try{
 
 
-            Vector<FactureDetails> listeFacture= FactureDAO.ListeDetailFactureA(connection);
+            Vector<FactureDetails> listeFacture= FactureDAO.listeFactureDetails(connection);
             request.setAttribute("FactureDetail", listeFacture);
             connection.close();
             request.getRequestDispatcher("ListeFactureDetails.jsp").forward(request,response);
